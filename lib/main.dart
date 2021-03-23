@@ -6,7 +6,9 @@ import 'package:whisqr_puncher/utils/l18n.dart';
 import 'package:whisqr_puncher/utils/router.gr.dart';
 import 'package:whisqr_puncher/utils/theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await l18nUtil.init();
   runApp(App());
 }
 
