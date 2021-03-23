@@ -1,16 +1,16 @@
-# whisqr_puncher
+# Whisqr Puncher
 
-A new Flutter project.
+## 💻 Development
 
-## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-This project is a starting point for a Flutter application.
+### 🏁 Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+* For developing on your local machine:
+  * Make sure you have [flutter 2.x](https://flutter.dev/) installed.
+  * Run `flutter doctor` in your terminal to verify that everything is fine.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### 📱 Run
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Run `flutter pub get` form the project directory to import packages and assets.
+- Run `flutter run` to run the app on your mobile device.
