@@ -12,5 +12,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### 📱 Run
 
-- Run `flutter pub get` form the project directory to import packages and assets.
+- Run `flutter pub get` from the project directory to import packages and assets.
 - Run `flutter run` to run the app on your mobile device.
+- After a change to the router, use the command `flutter packages pub run build_runner watch` to update the auto generated files.
