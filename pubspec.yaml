@@ -23,4 +23,20 @@ dev_dependencies:
   auto_route_generator: ^1.0.2
 
 flutter:
+  fonts:
+    - family: Neuton
+      fonts:
+        - asset: assets/fonts/Neuton/Neuton-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Neuton/Neuton-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Neuton/Neuton-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Neuton/Neuton-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Neuton/Neuton-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Neuton/Neuton-ExtraBold.ttf
+          weight: 800
   uses-material-design: true
