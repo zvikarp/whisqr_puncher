@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:whisqr_puncher/consts/general.dart';
 import 'package:whisqr_puncher/utils/l18n.dart';
 import 'package:whisqr_puncher/utils/router.gr.dart';
+import 'package:whisqr_puncher/utils/theme.dart';
 
 void main() {
   runApp(App());
@@ -16,18 +17,16 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: themeUtil.getTheme(),
       routerDelegate: _appRouter.delegate(),
       routeInformationParser: _appRouter.defaultRouteParser(),
-      title: 'Whisqr Puncher',
+      title: l18nUtil.t('general.app-name'),
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: GeneralConsts.LOCALES,
       locale: _locale,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
     );
   }
 }

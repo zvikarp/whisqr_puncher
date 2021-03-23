@@ -33,7 +33,7 @@ class L18nUtil {
     return translation;
   }
 
-  dynamic translate(String key, [Map<String, dynamic> inject = const {}]) {
+  dynamic t(String key, [Map<String, dynamic> inject = const {}]) {
     try {
       dynamic translation = _dotNotationParser(key);
       if (inject.isNotEmpty) {
