@@ -30,14 +30,13 @@ class ThemeUtil {
       textTheme: TextTheme(
         bodyText2: TextStyle(
           height: 1.2,
-          fontSize: 14,
+          fontSize: 16,
           fontWeight: FontWeight.w400,
           color: ThemeConsts.DARK_TEXT_COLOR,
         ),
         headline1: TextStyle(
-          height: 0.9,
           fontSize: 32,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w600,
           color: ThemeConsts.DARK_TEXT_COLOR,
         ),
         headline2: TextStyle(
