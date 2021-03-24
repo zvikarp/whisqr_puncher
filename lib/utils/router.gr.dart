@@ -41,9 +41,11 @@ class AppRouter extends _i1.RootStackRouter {
           barrierDismissible: false);
     },
     PuncherScreenRoute.name: (entry) {
+      var args = entry.routeData.argsAs<PuncherScreenRouteArgs>(
+          orElse: () => PuncherScreenRouteArgs());
       return _i1.CustomPage(
           entry: entry,
-          child: _i5.PuncherScreen(),
+          child: _i5.PuncherScreen(link: args.link),
           transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
           opaque: true,
           barrierDismissible: false);
@@ -77,8 +79,16 @@ class ScannerScreenRoute extends _i1.PageRouteInfo {
   static const String name = 'ScannerScreenRoute';
 }
 
-class PuncherScreenRoute extends _i1.PageRouteInfo {
-  const PuncherScreenRoute() : super(name, path: '/puncher-screen');
+class PuncherScreenRoute extends _i1.PageRouteInfo<PuncherScreenRouteArgs> {
+  PuncherScreenRoute({String link})
+      : super(name,
+            path: '/puncher-screen', args: PuncherScreenRouteArgs(link: link));
 
   static const String name = 'PuncherScreenRoute';
+}
+
+class PuncherScreenRouteArgs {
+  const PuncherScreenRouteArgs({this.link});
+
+  final String link;
 }
