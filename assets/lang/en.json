@@ -15,7 +15,8 @@
       "signin-btn": "Sign In"
     },
     "scanner": {
-      "header":"Scan a QR code"
+      "header":"Scan a QR code",
+      "signout-btn": "Sign Out"
     },
     "puncher": {}
   },
