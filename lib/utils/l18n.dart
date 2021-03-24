@@ -34,15 +34,16 @@ class L18nUtil {
   }
 
   dynamic t(String key, [Map<String, dynamic> inject = const {}]) {
+    String notFoundMsg = '** $key not found';
     try {
       dynamic translation = _dotNotationParser(key);
       if (inject.isNotEmpty) {
         translation = _stringInject(translation, inject);
       }
-      return translation;
+      return translation ?? notFoundMsg;
     } catch (e) {
       print(e);
-      return '** $key not found';
+      return notFoundMsg;
     }
   }
 

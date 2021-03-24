@@ -14,7 +14,9 @@
       "action-2": "Register your business",
       "signin-btn": "Sign In"
     },
-    "scanner": {},
+    "scanner": {
+      "header":"Scan a QR code"
+    },
     "puncher": {}
   },
 
