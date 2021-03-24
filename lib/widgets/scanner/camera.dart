@@ -36,8 +36,12 @@ class _ScannerCameraWidgetState extends State<ScannerCameraWidget> {
 
   void _onQRViewCreated(QRViewController controller) {
     _controller = controller;
-    controller.scannedDataStream.listen((scanData) {
-      AutoRouter.of(context).push(PuncherScreenRoute(link: scanData.code));
+    controller.scannedDataStream.listen((scanData) async {
+      print("sfdsf");
+      _controller.pauseCamera();
+      await AutoRouter.of(context)
+          .push(PuncherScreenRoute(link: scanData.code));
+      _controller.resumeCamera();
     });
   }
 
