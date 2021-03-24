@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_text_helpers/flutter_text_helpers.dart';
 
 import 'package:whisqr_puncher/consts/theme.dart';
+import 'package:whisqr_puncher/utils/l18n.dart';
 
 class SigninHeaderWidget extends StatelessWidget {
   @override
@@ -12,7 +13,7 @@ class SigninHeaderWidget extends StatelessWidget {
         vertical: ThemeConsts.XL_PAD,
       ),
       child: HeadlineText1(
-        "Welcome to Whisqr Loyalty Program Login",
+        l18nUtil.t('screen.signin.header'),
         textAlign: TextAlign.center,
       ),
     );

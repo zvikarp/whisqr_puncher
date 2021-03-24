@@ -4,7 +4,15 @@
   },
 
   "screen": {
-    "signin": {},
+    "signin": {
+      "header": "Welcome to Whisqr Loyalty Program Login",
+      "form-tl": "Welcome Back!",
+      "email-hint": "Email",
+      "password-hint": "Password",
+      "forgot-password-btn": "Forgot Password?",
+      "action-1": "New to Whisqr? ",
+      "action-2": "Register your business"
+    },
     "scanner": {},
     "puncher": {}
   }
