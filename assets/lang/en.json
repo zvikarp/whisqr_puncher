@@ -11,9 +11,14 @@
       "password-hint": "Password",
       "forgot-password-btn": "Forgot Password?",
       "action-1": "New to Whisqr? ",
-      "action-2": "Register your business"
+      "action-2": "Register your business",
+      "signin-btn": "Sign In"
     },
     "scanner": {},
     "puncher": {}
+  },
+
+  "msg": {
+    "unknown-server-error": "Unknown response form server"
   }
 }

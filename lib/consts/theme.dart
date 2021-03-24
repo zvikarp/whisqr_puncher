@@ -9,6 +9,7 @@ class ThemeConsts {
   static const Color ACCENT_COLOR = Color(0xff52D3AA);
   static const Color BACKGROUND_COLOR = Color(0xffffffff);
   static const Color DARK_TEXT_COLOR = Color(0xff333333);
+  static const Color LIGHT_TEXT_COLOR = Color(0xfff5f5f5);
 
   // border
   static const double L_RADIUS = 8;

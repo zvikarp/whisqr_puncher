@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:overlay_support/overlay_support.dart';
 
 import 'package:whisqr_puncher/consts/general.dart';
 import 'package:whisqr_puncher/utils/l18n.dart';
@@ -18,17 +19,19 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: themeUtil.getTheme(),
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
-      title: l18nUtil.t('general.app-name'),
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: GeneralConsts.LOCALES,
-      locale: _locale,
+    return OverlaySupport(
+      child: MaterialApp.router(
+        theme: themeUtil.getTheme(),
+        routerDelegate: _appRouter.delegate(),
+        routeInformationParser: _appRouter.defaultRouteParser(),
+        title: l18nUtil.t('general.app-name'),
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: GeneralConsts.LOCALES,
+        locale: _locale,
+      ),
     );
   }
 }
