@@ -6,19 +6,28 @@
 
 import 'package:auto_route/auto_route.dart' as _i1;
 
-import '../screens/puncher.dart' as _i4;
-import '../screens/scanner.dart' as _i3;
-import '../screens/signin.dart' as _i2;
+import '../screens/puncher.dart' as _i5;
+import '../screens/scanner.dart' as _i4;
+import '../screens/signin.dart' as _i3;
+import '../screens/splash.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter();
 
   @override
   final Map<String, _i1.PageFactory> pagesMap = {
+    SpalshScreenRoute.name: (entry) {
+      return _i1.CustomPage(
+          entry: entry,
+          child: _i2.SpalshScreen(),
+          transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
+          opaque: true,
+          barrierDismissible: false);
+    },
     SigninScreenRoute.name: (entry) {
       return _i1.CustomPage(
           entry: entry,
-          child: _i2.SigninScreen(),
+          child: _i3.SigninScreen(),
           transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
           opaque: true,
           barrierDismissible: false);
@@ -26,7 +35,7 @@ class AppRouter extends _i1.RootStackRouter {
     ScannerScreenRoute.name: (entry) {
       return _i1.CustomPage(
           entry: entry,
-          child: _i3.ScannerScreen(),
+          child: _i4.ScannerScreen(),
           transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
           opaque: true,
           barrierDismissible: false);
@@ -34,7 +43,7 @@ class AppRouter extends _i1.RootStackRouter {
     PuncherScreenRoute.name: (entry) {
       return _i1.CustomPage(
           entry: entry,
-          child: _i4.PuncherScreen(),
+          child: _i5.PuncherScreen(),
           transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
           opaque: true,
           barrierDismissible: false);
@@ -43,14 +52,21 @@ class AppRouter extends _i1.RootStackRouter {
 
   @override
   List<_i1.RouteConfig> get routes => [
-        _i1.RouteConfig(SigninScreenRoute.name, path: '/'),
+        _i1.RouteConfig(SpalshScreenRoute.name, path: '/'),
+        _i1.RouteConfig(SigninScreenRoute.name, path: '/signin-screen'),
         _i1.RouteConfig(ScannerScreenRoute.name, path: '/scanner-screen'),
         _i1.RouteConfig(PuncherScreenRoute.name, path: '/puncher-screen')
       ];
 }
 
+class SpalshScreenRoute extends _i1.PageRouteInfo {
+  const SpalshScreenRoute() : super(name, path: '/');
+
+  static const String name = 'SpalshScreenRoute';
+}
+
 class SigninScreenRoute extends _i1.PageRouteInfo {
-  const SigninScreenRoute() : super(name, path: '/');
+  const SigninScreenRoute() : super(name, path: '/signin-screen');
 
   static const String name = 'SigninScreenRoute';
 }

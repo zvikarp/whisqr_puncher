@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_text_helpers/flutter_text_helpers.dart';
@@ -6,9 +7,12 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:whisqr_puncher/consts/general.dart';
 import 'package:whisqr_puncher/consts/theme.dart';
 import 'package:whisqr_puncher/extensions/iterable.dart';
+import 'package:whisqr_puncher/models/user.dart';
 import 'package:whisqr_puncher/utils/api/index.dart';
 import 'package:whisqr_puncher/utils/l18n.dart';
+import 'package:whisqr_puncher/utils/router.gr.dart';
 import 'package:whisqr_puncher/utils/snackbar.dart';
+import 'package:whisqr_puncher/utils/storage.dart';
 import 'package:whisqr_puncher/widgets/core/spacer.dart';
 
 class SigninFormWidget extends StatefulWidget {
@@ -28,8 +32,19 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
   Future<void> _onTapSignin() async {
     setState(() => _loading = true);
     Response response = await apiUtil.user.login(_email, _password);
-    snackbarUtil.show((response?.data ?? [])['message'] ??
-        l18nUtil.t('msg.unknown-server-error'));
+    Map<String, dynamic> data = response?.data ?? [];
+    snackbarUtil
+        .show(data['message'] ?? l18nUtil.t('msg.unknown-server-error'));
+    print(response.statusCode);
+    if (data['status'] == 'success') {
+      User user = User(
+        email: _email,
+        pk: data['keyPublic'],
+        sk: data['keySecret'],
+      );
+      storageUtil.setUser(user);
+      AutoRouter.of(context).replace(ScannerScreenRoute());
+    }
     setState(() => _loading = false);
   }
 

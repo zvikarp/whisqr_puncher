@@ -9,8 +9,11 @@ class GeneralConsts {
   // assets
   static const String LANG_DIR = 'assets/lang/';
 
-  //links
+  // links
   static const String REGISTER_LINK = 'https://loyalty.whisqr.com/';
   static const String FORGOT_PASSWORD_LINK =
       'https://loyalty.whisqr.com/login/password/';
+
+  // storage
+  static const String STORAGE_USER = 'user';
 }
