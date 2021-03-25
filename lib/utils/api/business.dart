@@ -3,14 +3,11 @@ import 'package:dio/dio.dart';
 import 'package:whisqr_puncher/consts/api.dart';
 import 'package:whisqr_puncher/utils/api/index.dart';
 
-class UserApi {
-  Future<Response> login(String email, String password) async {
+class BusinessApi {
+  Future<Response> getBehaviours() async {
     try {
       Response response =
-          await apiUtil.dio.post(ApiConsts.USER_LOGIN_PATH, data: {
-        'email': email,
-        'password': password,
-      });
+          await apiUtil.dio.get(ApiConsts.BUSINESS_BEHAVIOURS_PATH);
       return response;
     } on DioError catch (e) {
       print(e);
@@ -22,4 +19,4 @@ class UserApi {
   }
 }
 
-final UserApi userApi = UserApi();
+final BusinessApi businessApi = BusinessApi();

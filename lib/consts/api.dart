@@ -1,5 +1,20 @@
 class ApiConsts {
   static const String API_VERSION = "/v1.2";
   static const String SERVER_URL = "https://whisqr.com/api$API_VERSION";
-  static const String USER_PATH = "/user/login";
+
+  // user
+  static const String USER_PATH = "$SERVER_URL/user";
+  static const String USER_LOGIN_PATH = "$USER_PATH/login";
+
+  // punch
+  static const String PUNCH_PATH = "$SERVER_URL/punch";
+
+  // redemption
+  static const String REDEMPTION_PATH = "$SERVER_URL/redemption";
+
+  // business
+  static const String BUSINESS_PATH = "$SERVER_URL/business";
+  static const String BUSINESS_BEHAVIOURS_PATH = "$BUSINESS_PATH/behaviours";
+  static const String BUSINESS_REWARDS_PATH = "$BUSINESS_PATH/rewards";
+  static const String BUSINESS_LOCATIONS_PATH = "$BUSINESS_PATH/locations";
 }

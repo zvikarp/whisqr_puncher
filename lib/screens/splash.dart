@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:whisqr_puncher/models/user.dart';
+import 'package:whisqr_puncher/utils/api/index.dart';
 import 'package:whisqr_puncher/utils/router.gr.dart';
 import 'package:whisqr_puncher/utils/storage.dart';
 
@@ -14,6 +15,7 @@ class _SpalshScreenState extends State<SpalshScreen> {
   Future<void> _loadUser() async {
     User user = await storageUtil.getUser();
     if (user.isValid()) {
+      await apiUtil.setHeaders();
       AutoRouter.of(context).replace(ScannerScreenRoute());
     } else {
       AutoRouter.of(context).replace(SigninScreenRoute());

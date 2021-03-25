@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_text_helpers/flutter_text_helpers.dart';
+
+import 'package:whisqr_puncher/widgets/puncher/options.dart';
 
 class PuncherScreen extends StatelessWidget {
   PuncherScreen({
@@ -11,8 +12,10 @@ class PuncherScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: BodyText2(link),
+      body: Column(
+        children: [
+          PuncherOptionsWidget(),
+        ],
       ),
     );
   }

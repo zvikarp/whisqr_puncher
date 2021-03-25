@@ -43,7 +43,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
         sk: data['keySecret'],
       );
       storageUtil.setUser(user);
-      AutoRouter.of(context).replace(ScannerScreenRoute());
+      AutoRouter.of(context).replace(SpalshScreenRoute());
     }
     setState(() => _loading = false);
   }
