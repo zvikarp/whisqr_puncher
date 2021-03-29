@@ -31,8 +31,11 @@ class PunchApi {
 
   Future<Response> initialize(String cardCode) async {
     // TODO: add location code
-    Map<String, dynamic> data = {"cardcode": cardCode};
     User user = await storageUtil.getUser();
+    Map<String, dynamic> data = {
+      "cardcode": cardCode,
+      "locationcode": user.locationCode
+    };
     String hashedData = cryptoUtil.hash(user.sk, data);
     try {
       Response response = await apiUtil.dio.post(ApiConsts.PUNCH_PATH,

@@ -20,7 +20,8 @@ class SigninBusinessSelectorWidget extends StatelessWidget {
           BodyText2(business['businessname']),
           ...business['locations'].map(
             (location) => SimpleDialogOption(
-              onPressed: () => Navigator.pop(context, businessCode),
+              onPressed: () => Navigator.pop<Map<String, String>>(
+                  context, {businessCode: location['locationcode'].toString()}),
               child: Text(location['locationname']),
             ),
           )

@@ -28,6 +28,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
   String _password;
   bool _loading = false;
   String _businessCode;
+  String _locationCode;
 
   Future<void> _onTapForgotPassword() async {
     await launch(GeneralConsts.FORGOT_PASSWORD_LINK);
@@ -42,6 +43,8 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
         email: _email,
         pk: data['keyPublic'],
         sk: data['keySecret'],
+        businessCode: _businessCode,
+        locationCode: _locationCode,
       );
       storageUtil.setUser(user);
       AutoRouter.of(context).replace(SpalshScreenRoute());
@@ -49,14 +52,15 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
     return response;
   }
 
-  Future<String> _openBusinessSelector(List businessCodes) async {
-    String businessCode = await showDialog<String>(
+  Future<Map<String, String>> _openBusinessSelector(List businessCodes) async {
+    Map<String, String> businessLocationCodes =
+        await showDialog<Map<String, String>>(
       context: context,
       builder: (BuildContext context) {
         return SigninBusinessSelectorWidget(businessCodes: businessCodes);
       },
     );
-    return businessCode;
+    return businessLocationCodes;
   }
 
   Future<void> _onTapSignin() async {
@@ -65,11 +69,13 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
     Status status =
         enumUtil.fromString(response?.data['status'], Status.values);
     if (status == Status.PENDING) {
-      String businessCode =
+      Map<String, String> businessLocationCodes =
           await _openBusinessSelector(response?.data['businesses']);
-      print(businessCode);
-      if (businessCode != null) {
-        setState(() => _businessCode = businessCode);
+      if (businessLocationCodes != null) {
+        setState(() {
+          _businessCode = businessLocationCodes.keys.first;
+          _locationCode = businessLocationCodes.values.first;
+        });
         response = await _sendSigninRequest();
         status = enumUtil.fromString(response?.data['status'], Status.values);
       }

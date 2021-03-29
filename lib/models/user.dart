@@ -6,14 +6,14 @@ class User {
     @required this.pk,
     @required this.sk,
     this.businessCode,
-    this.locationId,
+    this.locationCode,
   });
 
   final String email;
   final String pk;
   final String sk;
   final String businessCode;
-  final String locationId;
+  final String locationCode;
 
   bool isValid() => email != null && pk != null && sk != null;
 
@@ -22,7 +22,7 @@ class User {
         'pk': pk,
         'sk': sk,
         'businessCode': businessCode,
-        'locationId': locationId,
+        'locationCode': locationCode,
       };
 
   factory User.fromMap(Map<String, dynamic> map) => User(
@@ -30,6 +30,6 @@ class User {
         pk: map['pk'],
         sk: map['sk'],
         businessCode: map['businessCode'],
-        locationId: map['locationId'],
+        locationCode: map['locationCode'],
       );
 }
