@@ -5,13 +5,13 @@ import 'package:whisqr_puncher/utils/api/index.dart';
 
 class UserApi {
   Future<Response> login(
-      String email, String password, String _businessCode) async {
+      String email, String password, String businessCode) async {
     try {
       Response response =
           await apiUtil.dio.post(ApiConsts.USER_LOGIN_PATH, data: {
         'email': email,
         'password': password,
-        if (_businessCode != null) 'businesscode': _businessCode,
+        if (businessCode != null) 'businesscode': businessCode,
       });
       return response;
     } on DioError catch (e) {
