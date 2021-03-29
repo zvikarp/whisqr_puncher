@@ -21,8 +21,7 @@ class _PuncherOptionsWidgetState extends State<PuncherOptionsWidget> {
     Map<String, dynamic> behavioursAsMap = res.data['settings_behaviours'];
     List<Behaviour> behaviours = [];
     behavioursAsMap.forEach((String key, dynamic value) {
-      BehaviourType type =
-          enumUtil.fromString(key.toUpperCase(), BehaviourType.values);
+      BehaviourType type = enumUtil.fromString(key, BehaviourType.values);
       Behaviour behaviour = Behaviour.fromMap(type, value);
       behaviours.add(behaviour);
     });

@@ -6,14 +6,17 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'package:whisqr_puncher/consts/general.dart';
 import 'package:whisqr_puncher/consts/theme.dart';
+import 'package:whisqr_puncher/enums/status.dart';
 import 'package:whisqr_puncher/extensions/iterable.dart';
 import 'package:whisqr_puncher/models/user.dart';
 import 'package:whisqr_puncher/utils/api/index.dart';
+import 'package:whisqr_puncher/utils/enum.dart';
 import 'package:whisqr_puncher/utils/l18n.dart';
 import 'package:whisqr_puncher/utils/router.gr.dart';
 import 'package:whisqr_puncher/utils/snackbar.dart';
 import 'package:whisqr_puncher/utils/storage.dart';
 import 'package:whisqr_puncher/widgets/core/spacer.dart';
+import 'package:whisqr_puncher/widgets/signin/businessSelector.dart';
 
 class SigninFormWidget extends StatefulWidget {
   @override
@@ -24,18 +27,16 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
   String _email;
   String _password;
   bool _loading = false;
+  String _businessCode;
 
   Future<void> _onTapForgotPassword() async {
     await launch(GeneralConsts.FORGOT_PASSWORD_LINK);
   }
 
-  Future<void> _onTapSignin() async {
-    setState(() => _loading = true);
-    Response response = await apiUtil.user.login(_email, _password);
+  Future<Response> _sendSigninRequest() async {
+    Response response =
+        await apiUtil.user.login(_email, _password, _businessCode);
     Map<String, dynamic> data = response?.data ?? [];
-    snackbarUtil
-        .show(data['message'] ?? l18nUtil.t('msg.unknown-server-error'));
-    print(response.statusCode);
     if (data['status'] == 'success') {
       User user = User(
         email: _email,
@@ -45,6 +46,37 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
       storageUtil.setUser(user);
       AutoRouter.of(context).replace(SpalshScreenRoute());
     }
+    return response;
+  }
+
+  Future<String> _openBusinessSelector(List businessCodes) async {
+    String businessCode = await showDialog<String>(
+      context: context,
+      builder: (BuildContext context) {
+        return SigninBusinessSelectorWidget(businessCodes: businessCodes);
+      },
+    );
+    return businessCode;
+  }
+
+  Future<void> _onTapSignin() async {
+    setState(() => _loading = true);
+    Response response = await _sendSigninRequest();
+    Status status =
+        enumUtil.fromString(response?.data['status'], Status.values);
+    if (status == Status.PENDING) {
+      String businessCode =
+          await _openBusinessSelector(response?.data['businesses']);
+      print(businessCode);
+      if (businessCode != null) {
+        setState(() => _businessCode = businessCode);
+        response = await _sendSigninRequest();
+        status = enumUtil.fromString(response?.data['status'], Status.values);
+      }
+    }
+    if (status == Status.FAILURE)
+      snackbarUtil.show(
+          response.data['message'] ?? l18nUtil.t('msg.unknown-server-error'));
     setState(() => _loading = false);
   }
 
