@@ -8,6 +8,7 @@ class ApiConsts {
 
   // punch
   static const String PUNCH_PATH = "$SERVER_URL/punch";
+  static const String PUNCH_TOTAL_PATH = "$PUNCH_PATH/total";
 
   // redemption
   static const String REDEMPTION_PATH = "$SERVER_URL/redemption";

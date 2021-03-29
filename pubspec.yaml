@@ -12,9 +12,14 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  dio: ^3.0.10
+  dio:
+    git:
+      url: https://github.com/zvikarp/dio
+      path: dio
   auto_route: ^1.0.2
-  flutter_text_helpers: ^2.0.5
+  flutter_text_helpers:
+    git:
+      url: https://github.com/zvikarp/flutter_text_helpers
   flutter_secure_storage: ^4.1.0
   url_launcher: ^6.0.2
   overlay_support: ^1.2.0

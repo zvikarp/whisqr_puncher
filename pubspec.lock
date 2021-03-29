@@ -186,10 +186,12 @@ packages:
   dio:
     dependency: "direct main"
     description:
-      name: dio
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.10"
+      path: dio
+      ref: HEAD
+      resolved-ref: "4932b31fb48f3f0dba5f07c4a9692ecee74297ea"
+      url: "https://github.com/zvikarp/dio"
+    source: git
+    version: "4.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -236,9 +238,11 @@ packages:
   flutter_text_helpers:
     dependency: "direct main"
     description:
-      name: flutter_text_helpers
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: "035d5c8e83b5f15c0990b04a949160feee50a9b5"
+      url: "https://github.com/zvikarp/flutter_text_helpers"
+    source: git
     version: "2.0.5"
   flutter_web_plugins:
     dependency: transitive
@@ -272,7 +276,7 @@ packages:
       name: http_parser
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.4"
+    version: "4.0.0"
   intl:
     dependency: transitive
     description:
@@ -398,7 +402,7 @@ packages:
       name: shelf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.9"
+    version: "1.1.0"
   shelf_web_socket:
     dependency: transitive
     description:

@@ -41,9 +41,9 @@ class ThemeUtil {
         ),
         headline2: TextStyle(
           height: 0.9,
-          fontSize: 42,
+          fontSize: 64,
           fontWeight: FontWeight.w400,
-          color: ThemeConsts.DARK_TEXT_COLOR,
+          color: ThemeConsts.LIGHT_TEXT_COLOR,
         ),
         headline3: TextStyle(
           height: 0.9,
