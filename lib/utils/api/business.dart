@@ -14,7 +14,7 @@ class BusinessApi {
       return e.response;
     } catch (e) {
       print(e);
-      return Response(statusCode: 400);
+      return null;
     }
   }
 }

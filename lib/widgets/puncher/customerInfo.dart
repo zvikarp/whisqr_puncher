@@ -1,32 +1,14 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_text_helpers/flutter_text_helpers.dart';
 
 import 'package:whisqr_puncher/consts/theme.dart';
-import 'package:whisqr_puncher/utils/api/index.dart';
 
-class PuncherCustomerInfoWidget extends StatefulWidget {
+class PuncherCustomerInfoWidget extends StatelessWidget {
   PuncherCustomerInfoWidget({
-    @required this.cardCode,
+    @required this.punchesCount,
   });
 
-  final String cardCode;
-  @override
-  _PuncherCustomerInfoWidgetState createState() =>
-      _PuncherCustomerInfoWidgetState();
-}
-
-class _PuncherCustomerInfoWidgetState extends State<PuncherCustomerInfoWidget> {
-  int _punchesCount = -1;
-
-  Future<void> _getCustomer() async {
-    Response response = await apiUtil.punch.getTotal(widget.cardCode);
-    Map<String, dynamic> data = response?.data ?? [];
-    if (data['status'] == 'success') {
-      int punchesCount = int.parse(data['punchtotal'].toString());
-      setState(() => _punchesCount = punchesCount);
-    }
-  }
+  final int punchesCount;
 
   Widget _totalPunches() {
     return Container(
@@ -38,17 +20,11 @@ class _PuncherCustomerInfoWidgetState extends State<PuncherCustomerInfoWidget> {
         color: ThemeConsts.PRIMARY_COLOR,
       ),
       child: Center(
-        child: _punchesCount >= 0
-            ? HeadlineText2(_punchesCount.toString())
+        child: punchesCount >= 0
+            ? HeadlineText2(punchesCount.toString())
             : Container(),
       ),
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _getCustomer();
   }
 
   @override

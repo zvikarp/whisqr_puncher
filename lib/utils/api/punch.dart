@@ -13,16 +13,31 @@ class PunchApi {
     Map<String, dynamic> data = {"cardcode": cardCode};
     User user = await storageUtil.getUser();
     String hashedData = cryptoUtil.hash(user.sk, data);
-    print(user.pk);
-    print(user.sk);
-    print(data);
-    print(hashedData);
     try {
       Response response = await apiUtil.dio.get(ApiConsts.PUNCH_TOTAL_PATH,
           data: jsonEncode(data),
           options: Options(headers: {'X-Hash': hashedData}));
       print(response);
       print(response.data);
+      return response;
+    } on DioError catch (e) {
+      print(e);
+      return e.response;
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
+  Future<Response> initialize(String cardCode) async {
+    // TODO: add location code
+    Map<String, dynamic> data = {"cardcode": cardCode};
+    User user = await storageUtil.getUser();
+    String hashedData = cryptoUtil.hash(user.sk, data);
+    try {
+      Response response = await apiUtil.dio.post(ApiConsts.PUNCH_PATH,
+          data: jsonEncode(data),
+          options: Options(headers: {'X-Hash': hashedData}));
       return response;
     } on DioError catch (e) {
       print(e);
