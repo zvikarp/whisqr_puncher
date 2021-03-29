@@ -12,7 +12,7 @@ class BroughtFriendFields extends BehaviourFields {
         'rewardLevels': rewardLevels,
       };
 
-  factory BroughtFriendFields.fromMap(Map<String, dynamic> map) =>
+  factory BroughtFriendFields.fromStringMap(Map<String, dynamic> map) =>
       BroughtFriendFields(
         rewardLevels: map['rewardLevels'],
       );

@@ -12,8 +12,8 @@ class VisitsRegularlyFields extends BehaviourFields {
         'punches': punches,
       };
 
-  factory VisitsRegularlyFields.fromMap(Map<String, dynamic> map) =>
+  factory VisitsRegularlyFields.fromStringMap(Map<String, dynamic> map) =>
       VisitsRegularlyFields(
-        punches: map['punches'],
+        punches: int.parse(map['punches'].toString()),
       );
 }

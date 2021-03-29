@@ -4,6 +4,7 @@ import 'package:whisqr_puncher/enums/behaviourType.dart';
 import 'package:whisqr_puncher/models/behaviour.dart';
 import 'package:whisqr_puncher/utils/api/index.dart';
 import 'package:whisqr_puncher/utils/enum.dart';
+import 'package:whisqr_puncher/widgets/puncher/punchButton.dart';
 
 class PuncherOptionsWidget extends StatefulWidget {
   @override
@@ -15,14 +16,11 @@ class _PuncherOptionsWidgetState extends State<PuncherOptionsWidget> {
 
   Future<void> _getBehaviours() async {
     var res = await apiUtil.business.getBehaviours();
-    print(res);
-    print(res.data);
-    print(res.data['settings_behaviours']);
     Map<String, dynamic> behavioursAsMap = res.data['settings_behaviours'];
     List<Behaviour> behaviours = [];
     behavioursAsMap.forEach((String key, dynamic value) {
       BehaviourType type = enumUtil.fromString(key, BehaviourType.values);
-      Behaviour behaviour = Behaviour.fromMap(type, value);
+      Behaviour behaviour = Behaviour.fromStringMap(type, value);
       behaviours.add(behaviour);
     });
     setState(() => _behaviours = behaviours);
@@ -38,7 +36,10 @@ class _PuncherOptionsWidgetState extends State<PuncherOptionsWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: _behaviours
-          .map((Behaviour behaviour) => Text(enumUtil.string(behaviour.type)))
+          .map(
+            (Behaviour behaviour) =>
+                PuncherPunchButtonWidget(behaviour: behaviour),
+          )
           .toList(),
     );
   }

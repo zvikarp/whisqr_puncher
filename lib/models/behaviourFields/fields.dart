@@ -6,13 +6,12 @@ abstract class BehaviourFields {
 
   Map<String, dynamic> toMap();
 
-  BehaviourFields.fromMap(Map<String, dynamic> map);
-
   BehaviourFields.clone(BehaviourFields fields);
 
-  factory BehaviourFields.fromBehaviourMap(
+  factory BehaviourFields.fromStringMap(
       BehaviourType type, Map<String, dynamic> map) {
-    if (type == BehaviourType.BASICPUNCH) return BasicPunchFields.fromMap(map);
+    if (type == BehaviourType.BASICPUNCH)
+      return BasicPunchFields.fromStringMap(map);
     return null;
   }
 }

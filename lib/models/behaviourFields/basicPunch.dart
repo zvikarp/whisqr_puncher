@@ -12,8 +12,8 @@ class BasicPunchFields extends BehaviourFields {
         'punches': punches,
       };
 
-  factory BasicPunchFields.fromMap(Map<String, dynamic> map) =>
+  factory BasicPunchFields.fromStringMap(Map<String, dynamic> map) =>
       BasicPunchFields(
-        punches: map['punches'],
+        punches: int.parse(map['punches'].toString()),
       );
 }
