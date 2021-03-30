@@ -11,6 +11,12 @@ import 'package:whisqr_puncher/widgets/puncher/button/reward.dart';
 import 'package:whisqr_puncher/extensions/iterable.dart';
 
 class PuncherOptionsWidget extends StatefulWidget {
+  PuncherOptionsWidget({
+    @required this.punchCode,
+  });
+
+  final String punchCode;
+
   @override
   _PuncherOptionsWidgetState createState() => _PuncherOptionsWidgetState();
 }
@@ -55,8 +61,11 @@ class _PuncherOptionsWidgetState extends State<PuncherOptionsWidget> {
     return Column(children: [
       ..._behaviours
           .map(
-            (Behaviour behaviour) =>
-                PuncherBehaviorButtonWidget(behaviour: behaviour),
+            (Behaviour behaviour) => PuncherBehaviorButtonWidget(
+              punchCode: widget.punchCode,
+              behaviourPunches: 100,
+              behaviour: behaviour,
+            ),
           )
           .toList(),
       BodyText2('Rewards'),

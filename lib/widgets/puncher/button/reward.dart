@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:whisqr_puncher/models/reward.dart';
-import 'package:whisqr_puncher/widgets/puncher/button/button.dart';
+import 'package:whisqr_puncher/widgets/puncher/button/counterButton.dart';
 
 class PuncherRewardButtonWidget extends StatelessWidget {
   PuncherRewardButtonWidget({
@@ -12,6 +12,10 @@ class PuncherRewardButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PuncherPunchButtonWidget(text: reward.name);
+    return PuncherCounterButtonWidget(
+      text: reward.name,
+      onTapAdd: () {},
+      onTapReduce: () {},
+    );
   }
 }

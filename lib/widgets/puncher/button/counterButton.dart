@@ -2,17 +2,27 @@ import 'package:flutter/material.dart';
 
 import 'package:whisqr_puncher/consts/theme.dart';
 
-class PuncherPunchButtonWidget extends StatelessWidget {
-  PuncherPunchButtonWidget({
+class PuncherCounterButtonWidget extends StatelessWidget {
+  PuncherCounterButtonWidget({
     @required this.text,
+    this.addDisabled = false,
+    this.reduceDisabled = false,
+    @required this.onTapAdd,
+    @required this.onTapReduce,
   });
 
   final String text;
+  final bool addDisabled;
+  final bool reduceDisabled;
+  final Function onTapAdd;
+  final Function onTapReduce;
 
   Widget _reduce() {
     return _button(
       Icons.remove,
       Colors.red,
+      onTapReduce,
+      reduceDisabled,
     );
   }
 
@@ -20,21 +30,23 @@ class PuncherPunchButtonWidget extends StatelessWidget {
     return _button(
       Icons.add,
       Colors.green,
+      onTapAdd,
+      addDisabled,
     );
   }
 
-  Widget _button(IconData icon, Color color) {
+  Widget _button(IconData icon, Color color, Function onTap, bool disabled) {
     return Container(
-      child: IconButton(
-        icon: Icon(icon),
-        color: Colors.white70,
-        onPressed: () {},
-      ),
+      padding: EdgeInsets.all(ThemeConsts.S_PAD),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(ThemeConsts.S_RADIUS),
         color: color,
       ),
-      padding: EdgeInsets.all(ThemeConsts.S_PAD),
+      child: IconButton(
+        icon: Icon(icon),
+        color: Colors.white70,
+        onPressed: disabled ? () {} : onTap,
+      ),
     );
   }
 

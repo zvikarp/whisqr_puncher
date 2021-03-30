@@ -21,6 +21,7 @@ class PuncherScreen extends StatefulWidget {
 
 class _PuncherScreenState extends State<PuncherScreen> {
   int _punchesCount = -1;
+  String _punchCode;
   bool _loading = true;
 
   @override
@@ -36,7 +37,11 @@ class _PuncherScreenState extends State<PuncherScreen> {
 
     if (data['status'] == 'success') {
       int punchesCount = int.parse(data['punchtotal'].toString());
-      setState(() => _punchesCount = punchesCount);
+      String punchCode = data['punchcode'];
+      setState(() {
+        _punchesCount = punchesCount;
+        _punchCode = punchCode;
+      });
     }
     setState(() => _loading = false);
   }
@@ -62,7 +67,8 @@ class _PuncherScreenState extends State<PuncherScreen> {
                 ),
               if (!_loading)
                 PuncherCustomerInfoWidget(punchesCount: _punchesCount),
-              PuncherOptionsWidget(),
+              if (_punchCode != null)
+                PuncherOptionsWidget(punchCode: _punchCode),
             ],
           ),
         ),
