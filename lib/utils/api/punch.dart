@@ -30,7 +30,6 @@ class PunchApi {
   }
 
   Future<Response> initialize(String cardCode) async {
-    // TODO: add location code
     User user = await storageUtil.getUser();
     Map<String, dynamic> data = {
       "cardcode": cardCode,

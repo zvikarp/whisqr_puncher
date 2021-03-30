@@ -11,7 +11,7 @@ class ApiConsts {
   static const String PUNCH_TOTAL_PATH = "$PUNCH_PATH/total";
 
   // redemption
-  static const String REDEMPTION_PATH = "$SERVER_URL/redemption";
+  static const String REDEMPTION_PATH = "$SERVER_URL/redeem";
 
   // business
   static const String BUSINESS_PATH = "$SERVER_URL/business";

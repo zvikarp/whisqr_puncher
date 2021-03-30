@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:whisqr_puncher/consts/theme.dart';
-import 'package:whisqr_puncher/models/behaviour.dart';
-import 'package:whisqr_puncher/utils/enum.dart';
 
 class PuncherPunchButtonWidget extends StatelessWidget {
   PuncherPunchButtonWidget({
-    this.behaviour,
+    @required this.text,
   });
 
-  final Behaviour behaviour;
+  final String text;
 
   Widget _reduce() {
     return _button(
@@ -45,7 +43,7 @@ class PuncherPunchButtonWidget extends StatelessWidget {
         child: Center(
             child: Padding(
       padding: EdgeInsets.all(ThemeConsts.S_PAD),
-      child: Text(enumUtil.string(behaviour.type)),
+      child: Text(text),
     )));
   }
 
