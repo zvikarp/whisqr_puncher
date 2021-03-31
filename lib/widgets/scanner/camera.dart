@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+
 import 'package:whisqr_puncher/utils/router.gr.dart';
 
 class ScannerCameraWidget extends StatefulWidget {

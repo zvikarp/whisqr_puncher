@@ -20,7 +20,7 @@ class PuncherCounterButtonWidget extends StatelessWidget {
   Widget _reduce() {
     return _button(
       Icons.remove,
-      Colors.red,
+      ThemeConsts.RED_COLOR,
       onTapReduce,
       reduceDisabled,
     );
@@ -29,7 +29,7 @@ class PuncherCounterButtonWidget extends StatelessWidget {
   Widget _add() {
     return _button(
       Icons.add,
-      Colors.green,
+      ThemeConsts.GREEN_COLOR,
       onTapAdd,
       addDisabled,
     );
@@ -44,7 +44,7 @@ class PuncherCounterButtonWidget extends StatelessWidget {
       ),
       child: IconButton(
         icon: Icon(icon),
-        color: Colors.white70,
+        color: ThemeConsts.LIGHT_TEXT_COLOR,
         onPressed: disabled ? () {} : onTap as void Function()?,
       ),
     );
@@ -68,7 +68,7 @@ class PuncherCounterButtonWidget extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(ThemeConsts.S_RADIUS),
-        color: Colors.black12,
+        color: ThemeConsts.DISABLED_COLOR,
       ),
       child: Row(
         children: [

@@ -12,16 +12,26 @@
       "forgot-password-btn": "Forgot Password?",
       "action-1": "New to Whisqr? ",
       "action-2": "Register your business",
-      "signin-btn": "Sign In"
+      "signin-btn": "Sign In",
+      "business-selector-tl": "Select Business"
     },
     "scanner": {
-      "header":"Scan a QR code",
+      "header": "Scan a QR code",
       "signout-btn": "Sign Out"
     },
-    "puncher": {}
+    "puncher": {
+      "welcome": "Welcome {{name}}",
+      "no-name": "customer"
+    }
   },
 
   "msg": {
     "unknown-server-error": "Unknown response form server"
+  },
+
+  "model": {
+    "reward": {
+      "missing-name": "Missing reward name"
+    }
   }
 }

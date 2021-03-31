@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_text_helpers/flutter_text_helpers.dart';
 
 import 'package:whisqr_puncher/consts/theme.dart';
+import 'package:whisqr_puncher/utils/l18n.dart';
 
 class SigninBusinessSelectorWidget extends StatelessWidget {
   SigninBusinessSelectorWidget({
@@ -33,7 +34,7 @@ class SigninBusinessSelectorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      title: const Text('Select Business'),
+      title: Text(l18nUtil.t('business-selector-tl')),
       children: businessCodes!
           .map((business) => _businessSection(context, Map.from(business)))
           .toList(),

@@ -29,7 +29,9 @@ class PuncherToggleButtonWidget extends StatelessWidget {
         padding: EdgeInsets.all(ThemeConsts.L_PAD),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(ThemeConsts.S_RADIUS),
-          color: (value && !disabled) ? Colors.green : Colors.black12,
+          color: (value && !disabled)
+              ? ThemeConsts.GREEN_COLOR
+              : ThemeConsts.DISABLED_COLOR,
         ),
         child: Center(child: BodyText2(text)),
       ),

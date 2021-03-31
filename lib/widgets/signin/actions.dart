@@ -32,10 +32,7 @@ class SigninActionsWidget extends StatelessWidget {
                 decoration: TextDecoration.underline,
               ),
         ),
-      ])
-
-          // textAlign: TextAlign.center,
-          ),
+      ])),
     );
   }
 }

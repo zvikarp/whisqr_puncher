@@ -5,6 +5,7 @@ import 'package:flutter_text_helpers/flutter_text_helpers.dart';
 import 'package:whisqr_puncher/consts/theme.dart';
 import 'package:whisqr_puncher/models/customer.dart';
 import 'package:whisqr_puncher/stores/index.dart';
+import 'package:whisqr_puncher/utils/l18n.dart';
 import 'package:whisqr_puncher/widgets/core/spacer.dart';
 
 class PuncherCustomerInfoWidget extends StatelessWidget {
@@ -30,7 +31,9 @@ class PuncherCustomerInfoWidget extends StatelessWidget {
           children: [
             _totalPunches(customer?.punchTotal ?? 0),
             CoreSpacer(height: ThemeConsts.L_PAD),
-            BodyText2('Welcome ${customer?.name ?? 'No name'}'),
+            BodyText2(l18nUtil.t('screen.puncher.welcome', {
+              'name': customer?.name ?? l18nUtil.t('screen.puncher.no-name')
+            })),
           ],
         ),
       );
