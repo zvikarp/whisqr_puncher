@@ -27,7 +27,7 @@ class Customer {
         details: Map.from(map['details'] ?? {}).map(
             (dynamic key, dynamic value) => MapEntry(
                 enumUtil.fromString(key, BehaviourType.values) ??
-                    BehaviourType.UNKNOWN,
+                    BehaviourType.unknown,
                 value)),
       );
 }
