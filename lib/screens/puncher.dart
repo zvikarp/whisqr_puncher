@@ -1,11 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-import 'package:whisqr_puncher/consts/theme.dart';
-
+import 'package:whisqr_puncher/models/customer.dart';
+import 'package:whisqr_puncher/stores/index.dart';
 import 'package:whisqr_puncher/utils/api/index.dart';
 import 'package:whisqr_puncher/widgets/puncher/customerInfo.dart';
-
 import 'package:whisqr_puncher/widgets/puncher/options.dart';
 
 class PuncherScreen extends StatefulWidget {
@@ -20,10 +19,7 @@ class PuncherScreen extends StatefulWidget {
 }
 
 class _PuncherScreenState extends State<PuncherScreen> {
-  int _punchesCount = -1;
-  String? _punchCode;
   bool _loading = true;
-  Map<String, dynamic>? _punchDetails = {};
 
   @override
   void initState() {
@@ -37,11 +33,8 @@ class _PuncherScreenState extends State<PuncherScreen> {
     Map<String, dynamic> data = response?.data ?? [];
 
     if (data['status'] == 'success') {
-      setState(() {
-        _punchesCount = int.parse(data['punchtotal'].toString());
-        _punchCode = data['punchcode'];
-        _punchDetails = data['details'];
-      });
+      Customer customer = Customer.fromStringMap(data);
+      stores.customer(context).setCustomer(customer);
     }
     setState(() => _loading = false);
   }
@@ -56,23 +49,17 @@ class _PuncherScreenState extends State<PuncherScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              if (_loading)
-                Padding(
-                  padding: const EdgeInsets.all(ThemeConsts.L_PAD),
-                  child: Center(child: CircularProgressIndicator()),
+        child: _loading
+            ? Center(child: CircularProgressIndicator())
+            : SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    PuncherCustomerInfoWidget(),
+                    PuncherOptionsWidget(),
+                  ],
                 ),
-              if (!_loading)
-                PuncherCustomerInfoWidget(punchesCount: _punchesCount),
-              if (_punchCode != null)
-                PuncherOptionsWidget(
-                    punchCode: _punchCode, punchDetails: _punchDetails),
-            ],
-          ),
-        ),
+              ),
       ),
     );
   }

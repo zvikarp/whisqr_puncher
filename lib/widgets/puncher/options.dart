@@ -8,14 +8,6 @@ import 'package:whisqr_puncher/widgets/puncher/button/behavior.dart';
 import 'package:whisqr_puncher/widgets/puncher/button/reward.dart';
 
 class PuncherOptionsWidget extends StatelessWidget {
-  PuncherOptionsWidget({
-    required this.punchCode,
-    this.punchDetails = const {},
-  });
-
-  final String? punchCode;
-  final Map<String, dynamic>? punchDetails;
-
   @override
   Widget build(BuildContext context) {
     List<Behaviour> behaviours = stores.business(context).behaviours;
@@ -24,7 +16,7 @@ class PuncherOptionsWidget extends StatelessWidget {
       ...behaviours
           .map(
             (Behaviour behaviour) => PuncherBehaviorButtonWidget(
-              punchCode: punchCode ?? '',
+              punchCode: '',
               behaviourPunches: 100,
               behaviour: behaviour,
             ),

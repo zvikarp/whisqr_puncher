@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import 'package:whisqr_puncher/consts/general.dart';
 import 'package:whisqr_puncher/stores/business.dart';
+import 'package:whisqr_puncher/stores/customer.dart';
 import 'package:whisqr_puncher/utils/l18n.dart';
 import 'package:whisqr_puncher/utils/router.gr.dart';
 import 'package:whisqr_puncher/utils/theme.dart';
@@ -15,7 +16,7 @@ void main() async {
   runApp(
     MultiProvider(providers: [
       Provider<BusinessStore>(create: (_) => BusinessStore()),
-      // Provider<CustomerStore>(create: (_) => CustomerStore()),
+      Provider<CustomerStore>(create: (_) => CustomerStore()),
     ], child: App()),
   );
 }

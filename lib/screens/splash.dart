@@ -55,9 +55,7 @@ class _SpalshScreenState extends State<SpalshScreen> {
     if (user.isValid()) {
       await apiUtil.setHeaders();
       await _loadBusinessSettings();
-      // AutoRouter.of(context).replace(ScannerScreenRoute());
-      AutoRouter.of(context).replace(
-          PuncherScreenRoute(link: 'https://loyalty.whisqr.com/card/4PKuZ9C'));
+      AutoRouter.of(context).replace(ScannerScreenRoute());
     } else {
       AutoRouter.of(context).replace(SigninScreenRoute());
     }
@@ -72,7 +70,9 @@ class _SpalshScreenState extends State<SpalshScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: CircularProgressIndicator()),
+      body: SafeArea(
+        child: Center(child: CircularProgressIndicator()),
+      ),
     );
   }
 }
