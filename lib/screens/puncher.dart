@@ -53,7 +53,7 @@ class _PuncherScreenState extends State<PuncherScreen> {
             ? Center(child: CircularProgressIndicator())
             : SingleChildScrollView(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     PuncherCustomerInfoWidget(),
                     PuncherOptionsWidget(),

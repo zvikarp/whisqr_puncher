@@ -1,5 +1,4 @@
 import 'package:whisqr_puncher/enums/behaviourType.dart';
-import 'package:whisqr_puncher/models/behaviourFields/fields.dart';
 import 'package:whisqr_puncher/extensions/string.dart';
 
 class Behaviour {
@@ -10,13 +9,13 @@ class Behaviour {
   });
 
   final bool active;
-  final BehaviourFields fields;
+  final Map<String, dynamic>? fields;
   final BehaviourType type;
 
   factory Behaviour.fromMap(BehaviourType type, Map<String, dynamic> map) {
     return Behaviour(
       active: map['active'],
-      fields: BehaviourFields.fromStringMap(type, map['fields']),
+      fields: map['fields'],
       type: type,
     );
   }
@@ -25,7 +24,7 @@ class Behaviour {
       BehaviourType type, Map<String, dynamic> map) {
     return Behaviour(
       active: map['active'].toString().parseBool(),
-      fields: BehaviourFields.fromStringMap(type, map['fields']),
+      fields: map['fields'],
       type: type,
     );
   }

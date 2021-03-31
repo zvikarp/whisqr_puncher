@@ -30,7 +30,7 @@ class _SpalshScreenState extends State<SpalshScreen> {
     List<Behaviour> behaviours = [];
     behavioursAsMap.forEach((String key, dynamic value) {
       BehaviourType type = enumUtil.fromString(key, BehaviourType.values) ??
-          BehaviourType.UNKNOWN;
+          BehaviourType.unknown;
       Behaviour behaviour = Behaviour.fromStringMap(type, value);
       behaviours.add(behaviour);
     });

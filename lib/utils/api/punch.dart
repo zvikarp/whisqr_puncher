@@ -49,6 +49,30 @@ class PunchApi {
       return null;
     }
   }
+
+  Future<Response?> update(
+      String punchCode, Map<String, dynamic> details) async {
+    User user = await storageUtil.getUser();
+    Map<String, dynamic> data = {"details": details};
+    String hashedData = cryptoUtil.hash(user.sk!, data);
+    print(hashedData);
+    print(user.pk);
+    print(jsonEncode(data));
+    print(data);
+    try {
+      Response response = await apiUtil.dio.put(
+          '${ApiConsts.PUNCH_PATH}/$punchCode',
+          data: jsonEncode(data),
+          options: Options(headers: {'X-Hash': hashedData}));
+      return response;
+    } on DioError catch (e) {
+      print(e);
+      return e.response;
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
 }
 
 final PunchApi punchApi = PunchApi();
