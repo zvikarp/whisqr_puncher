@@ -12,7 +12,7 @@ class SigninBusinessSelectorWidget extends StatelessWidget {
   final List? businessCodes;
 
   Widget _businessSection(BuildContext context, Map business) {
-    String? businessCode = business['businesscode'];
+    String businessCode = business['businesscode'];
     return Padding(
       padding: const EdgeInsets.all(ThemeConsts.S_PAD),
       child: Column(
@@ -21,7 +21,7 @@ class SigninBusinessSelectorWidget extends StatelessWidget {
           BodyText2(business['businessname']),
           ...business['locations'].map(
             (location) => SimpleDialogOption(
-              onPressed: () => Navigator.pop<Map<String?, String>>(
+              onPressed: () => Navigator.pop<Map<String, String>>(
                   context, {businessCode: location['locationcode'].toString()}),
               child: Text(location['locationname']),
             ),
@@ -34,10 +34,16 @@ class SigninBusinessSelectorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      title: Text(l18nUtil.t('business-selector-tl')),
-      children: businessCodes!
-          .map((business) => _businessSection(context, Map.from(business)))
-          .toList(),
-    );
+        title: Text(l18nUtil.t('screen.signin.business-selector-tl')),
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: businessCodes!
+                  .map((business) =>
+                      _businessSection(context, Map.from(business)))
+                  .toList(),
+            ),
+          ),
+        ]);
   }
 }

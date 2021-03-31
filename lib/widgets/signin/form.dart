@@ -69,7 +69,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
     Response? response = await _sendSigninRequest();
     Status? status =
         enumUtil.fromString(response?.data['status'], Status.values);
-    if (status == Status.PENDING) {
+    if (status == Status.pending) {
       Map<String, String>? businessLocationCodes =
           await _openBusinessSelector(response?.data['businesses']);
       if (businessLocationCodes != null) {
@@ -81,7 +81,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
         status = enumUtil.fromString(response?.data['status'], Status.values);
       }
     }
-    if (status == Status.FAILURE)
+    if (status == Status.failure)
       snackbarUtil.show(
           response!.data['message'] ?? l18nUtil.t('msg.unknown-server-error'));
     setState(() => _loading = false);

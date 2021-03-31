@@ -1,5 +1,5 @@
 enum Status {
-  SUCCESS,
-  PENDING,
-  FAILURE,
+  success,
+  pending,
+  failure,
 }

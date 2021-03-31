@@ -39,7 +39,7 @@ class _SpalshScreenState extends State<SpalshScreen> {
 
   Future<void> _getRewards() async {
     Response? res = await (apiUtil.business.getRewards());
-    List<dynamic> rewardsAsList = res?.data['settings_rewards'];
+    List<dynamic> rewardsAsList = res?.data?['settings_rewards'] ?? [];
     List<Reward> rewards = rewardsAsList
         .mapIndexed<Reward>(
           (dynamic reward, int index) =>
