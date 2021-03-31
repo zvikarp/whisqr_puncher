@@ -12,25 +12,29 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  dio:
-    git:
-      url: https://github.com/zvikarp/dio
-      path: dio
   auto_route: ^1.0.2
-  flutter_text_helpers:
-    git:
-      url: https://github.com/zvikarp/flutter_text_helpers
   flutter_secure_storage: ^4.1.0
   url_launcher: ^6.0.2
   overlay_support: ^1.2.0
   qr_code_scanner: ^0.4.0-nullsafety.0
   crypto: ^3.0.0
+  mobx: ^2.0.0-nullsafety.6
+  flutter_mobx: ^2.0.0-nullsafety.3
+  provider: ^5.0.0
+  flutter_text_helpers:
+    git:
+      url: https://github.com/zvikarp/flutter_text_helpers
+  dio:
+    git:
+      url: https://github.com/zvikarp/dio
+      path: dio
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: ^1.12.2
   auto_route_generator: ^1.0.2
+  mobx_codegen: ^2.0.0-nullsafety.2
 
 flutter:
   assets:
