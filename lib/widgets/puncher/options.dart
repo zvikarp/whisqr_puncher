@@ -10,6 +10,7 @@ import 'package:whisqr_puncher/models/reward.dart';
 import 'package:whisqr_puncher/stores/index.dart';
 import 'package:whisqr_puncher/widgets/puncher/button/behaviour.dart';
 import 'package:whisqr_puncher/widgets/puncher/button/reward.dart';
+import 'package:whisqr_puncher/widgets/puncher/myTreat.dart';
 import 'package:whisqr_puncher/widgets/puncher/specials.dart';
 
 class PuncherOptionsWidget extends StatelessWidget {
@@ -37,6 +38,10 @@ class PuncherOptionsWidget extends StatelessWidget {
               punchCode: customer?.punchCode ?? '',
               opportunist: behaviours.firstWhere((Behaviour behaviour) =>
                   behaviour.type == BehaviourType.opportunist)),
+          PuncherMyTreatWidget(
+              punchCode: customer?.punchCode ?? '',
+              myTreat: behaviours.firstWhere((Behaviour behaviour) =>
+                  behaviour.type == BehaviourType.mytreat)),
           Padding(
             padding: const EdgeInsets.all(ThemeConsts.L_PAD),
             child: BodyText2('Rewards'),

@@ -21,7 +21,11 @@
     },
     "puncher": {
       "welcome": "Welcome {{name}}",
-      "no-name": "customer"
+      "no-name": "customer",
+      "specials-tl": "Specials",
+      "no-specials": "No specials",
+      "mytreat-tl": "My Treat",
+      "no-mytreat": "No 'my treat' products"
     }
   },
 
