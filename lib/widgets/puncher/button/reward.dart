@@ -8,12 +8,12 @@ class PuncherRewardButtonWidget extends StatelessWidget {
     this.reward,
   });
 
-  final Reward reward;
+  final Reward? reward;
 
   @override
   Widget build(BuildContext context) {
     return PuncherCounterButtonWidget(
-      text: reward.name,
+      text: reward?.name ?? 'Missing reward name',
       onTapAdd: () {},
       onTapReduce: () {},
     );

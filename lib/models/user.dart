@@ -1,19 +1,17 @@
-import 'package:flutter/cupertino.dart';
-
 class User {
   User({
-    @required this.email,
-    @required this.pk,
-    @required this.sk,
+    required this.email,
+    required this.pk,
+    required this.sk,
     this.businessCode,
     this.locationCode,
   });
 
-  final String email;
-  final String pk;
-  final String sk;
-  final String businessCode;
-  final String locationCode;
+  final String? email;
+  final String? pk;
+  final String? sk;
+  final String? businessCode;
+  final String? locationCode;
 
   bool isValid() => email != null && pk != null && sk != null;
 

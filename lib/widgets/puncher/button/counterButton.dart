@@ -4,11 +4,11 @@ import 'package:whisqr_puncher/consts/theme.dart';
 
 class PuncherCounterButtonWidget extends StatelessWidget {
   PuncherCounterButtonWidget({
-    @required this.text,
+    required this.text,
     this.addDisabled = false,
     this.reduceDisabled = false,
-    @required this.onTapAdd,
-    @required this.onTapReduce,
+    required this.onTapAdd,
+    required this.onTapReduce,
   });
 
   final String text;
@@ -45,7 +45,7 @@ class PuncherCounterButtonWidget extends StatelessWidget {
       child: IconButton(
         icon: Icon(icon),
         color: Colors.white70,
-        onPressed: disabled ? () {} : onTap,
+        onPressed: disabled ? () {} : onTap as void Function()?,
       ),
     );
   }

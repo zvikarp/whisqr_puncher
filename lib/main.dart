@@ -23,7 +23,7 @@ void main() async {
 
 class App extends StatelessWidget {
   final AppRouter _appRouter = AppRouter();
-  final Locale _locale = l18nUtil.locale;
+  final Locale? _locale = l18nUtil.locale;
 
   @override
   Widget build(BuildContext context) {

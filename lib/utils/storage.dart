@@ -7,7 +7,7 @@ import 'package:whisqr_puncher/models/user.dart';
 class StorageUtil {
   final _storage = FlutterSecureStorage();
 
-  Future<String> _get(String key) async => await _storage.read(key: key);
+  Future<String?> _get(String key) async => await _storage.read(key: key);
 
   Future<void> _set(String key, String value) async =>
       await _storage.write(key: key, value: value);

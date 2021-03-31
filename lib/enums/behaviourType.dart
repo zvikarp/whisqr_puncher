@@ -11,4 +11,5 @@ enum BehaviourType {
   REGISTERER,
   VISITSLOCATIONS,
   LUCKIEST,
+  UNKNOWN,
 }

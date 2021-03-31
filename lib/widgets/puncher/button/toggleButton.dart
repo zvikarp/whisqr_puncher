@@ -5,10 +5,10 @@ import 'package:whisqr_puncher/consts/theme.dart';
 
 class PuncherToggleButtonWidget extends StatelessWidget {
   PuncherToggleButtonWidget({
-    @required this.text,
+    required this.text,
     this.disabled = false,
-    @required this.value,
-    @required this.onToggle,
+    required this.value,
+    required this.onToggle,
   });
 
   final String text;

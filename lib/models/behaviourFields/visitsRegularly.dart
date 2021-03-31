@@ -5,7 +5,7 @@ class VisitsRegularlyFields extends BehaviourFields {
     this.punches,
   });
 
-  final int punches;
+  final int? punches;
 
   @override
   Map<String, dynamic> toMap() => {

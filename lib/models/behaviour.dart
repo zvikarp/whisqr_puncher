@@ -1,14 +1,12 @@
-import 'package:flutter/material.dart';
-
 import 'package:whisqr_puncher/enums/behaviourType.dart';
 import 'package:whisqr_puncher/models/behaviourFields/fields.dart';
 import 'package:whisqr_puncher/extensions/string.dart';
 
 class Behaviour {
   Behaviour({
-    @required this.active,
-    @required this.fields,
-    @required this.type,
+    required this.active,
+    required this.fields,
+    required this.type,
   });
 
   final bool active;

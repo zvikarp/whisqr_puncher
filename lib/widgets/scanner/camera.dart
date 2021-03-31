@@ -12,15 +12,15 @@ class ScannerCameraWidget extends StatefulWidget {
 
 class _ScannerCameraWidgetState extends State<ScannerCameraWidget> {
   final GlobalKey _qrKey = GlobalKey(debugLabel: 'QR');
-  QRViewController _controller;
+  QRViewController? _controller;
 
   @override
   void reassemble() {
     super.reassemble();
     if (Platform.isAndroid) {
-      _controller.pauseCamera();
+      _controller!.pauseCamera();
     } else if (Platform.isIOS) {
-      _controller.resumeCamera();
+      _controller!.resumeCamera();
     }
   }
 
@@ -37,10 +37,10 @@ class _ScannerCameraWidgetState extends State<ScannerCameraWidget> {
   void _onQRViewCreated(QRViewController controller) {
     _controller = controller;
     controller.scannedDataStream.first.then((scanData) async {
-      _controller.pauseCamera();
+      _controller!.pauseCamera();
       await AutoRouter.of(context)
           .push(PuncherScreenRoute(link: scanData.code));
-      _controller.resumeCamera();
+      _controller!.resumeCamera();
     });
   }
 

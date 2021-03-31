@@ -9,10 +9,10 @@ import 'package:whisqr_puncher/utils/crypto.dart';
 import 'package:whisqr_puncher/utils/storage.dart';
 
 class PunchApi {
-  Future<Response> getTotal(String cardCode) async {
+  Future<Response?> getTotal(String cardCode) async {
     Map<String, dynamic> data = {"cardcode": cardCode};
     User user = await storageUtil.getUser();
-    String hashedData = cryptoUtil.hash(user.sk, data);
+    String hashedData = cryptoUtil.hash(user.sk!, data);
     try {
       Response response = await apiUtil.dio.get(ApiConsts.PUNCH_TOTAL_PATH,
           data: jsonEncode(data),
@@ -29,13 +29,13 @@ class PunchApi {
     }
   }
 
-  Future<Response> initialize(String cardCode) async {
+  Future<Response?> initialize(String cardCode) async {
     User user = await storageUtil.getUser();
     Map<String, dynamic> data = {
       "cardcode": cardCode,
       "locationcode": user.locationCode
     };
-    String hashedData = cryptoUtil.hash(user.sk, data);
+    String hashedData = cryptoUtil.hash(user.sk!, data);
     try {
       Response response = await apiUtil.dio.post(ApiConsts.PUNCH_PATH,
           data: jsonEncode(data),

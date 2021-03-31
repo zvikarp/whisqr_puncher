@@ -4,7 +4,7 @@ class CoreSpacer extends StatelessWidget {
   const CoreSpacer({
     this.width = 0,
     this.height = 0,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final double width;

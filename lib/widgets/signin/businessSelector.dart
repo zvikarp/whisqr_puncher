@@ -5,13 +5,13 @@ import 'package:whisqr_puncher/consts/theme.dart';
 
 class SigninBusinessSelectorWidget extends StatelessWidget {
   SigninBusinessSelectorWidget({
-    @required this.businessCodes,
+    required this.businessCodes,
   });
 
-  final List businessCodes;
+  final List? businessCodes;
 
   Widget _businessSection(BuildContext context, Map business) {
-    String businessCode = business['businesscode'];
+    String? businessCode = business['businesscode'];
     return Padding(
       padding: const EdgeInsets.all(ThemeConsts.S_PAD),
       child: Column(
@@ -20,7 +20,7 @@ class SigninBusinessSelectorWidget extends StatelessWidget {
           BodyText2(business['businessname']),
           ...business['locations'].map(
             (location) => SimpleDialogOption(
-              onPressed: () => Navigator.pop<Map<String, String>>(
+              onPressed: () => Navigator.pop<Map<String?, String>>(
                   context, {businessCode: location['locationcode'].toString()}),
               child: Text(location['locationname']),
             ),
@@ -34,7 +34,7 @@ class SigninBusinessSelectorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SimpleDialog(
       title: const Text('Select Business'),
-      children: businessCodes
+      children: businessCodes!
           .map((business) => _businessSection(context, Map.from(business)))
           .toList(),
     );

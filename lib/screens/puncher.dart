@@ -10,10 +10,10 @@ import 'package:whisqr_puncher/widgets/puncher/options.dart';
 
 class PuncherScreen extends StatefulWidget {
   PuncherScreen({
-    @required this.link,
+    required this.link,
   });
 
-  final String link;
+  final String? link;
 
   @override
   _PuncherScreenState createState() => _PuncherScreenState();
@@ -21,8 +21,9 @@ class PuncherScreen extends StatefulWidget {
 
 class _PuncherScreenState extends State<PuncherScreen> {
   int _punchesCount = -1;
-  String _punchCode;
+  String? _punchCode;
   bool _loading = true;
+  Map<String, dynamic>? _punchDetails = {};
 
   @override
   void initState() {
@@ -31,16 +32,15 @@ class _PuncherScreenState extends State<PuncherScreen> {
   }
 
   Future<void> _initPunch() async {
-    Response response =
-        await apiUtil.punch.initialize(_getCardCode(widget.link));
+    Response? response =
+        await apiUtil.punch.initialize(_getCardCode(widget.link!));
     Map<String, dynamic> data = response?.data ?? [];
 
     if (data['status'] == 'success') {
-      int punchesCount = int.parse(data['punchtotal'].toString());
-      String punchCode = data['punchcode'];
       setState(() {
-        _punchesCount = punchesCount;
-        _punchCode = punchCode;
+        _punchesCount = int.parse(data['punchtotal'].toString());
+        _punchCode = data['punchcode'];
+        _punchDetails = data['details'];
       });
     }
     setState(() => _loading = false);
@@ -68,7 +68,8 @@ class _PuncherScreenState extends State<PuncherScreen> {
               if (!_loading)
                 PuncherCustomerInfoWidget(punchesCount: _punchesCount),
               if (_punchCode != null)
-                PuncherOptionsWidget(punchCode: _punchCode),
+                PuncherOptionsWidget(
+                    punchCode: _punchCode, punchDetails: _punchDetails),
             ],
           ),
         ),

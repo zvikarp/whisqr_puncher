@@ -28,7 +28,7 @@ class SigninActionsWidget extends StatelessWidget {
         TextSpan(
           text: l18nUtil.t('screen.signin.action-2'),
           recognizer: TapGestureRecognizer()..onTap = _onTapRegister,
-          style: Theme.of(context).textTheme.bodyText2.copyWith(
+          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                 decoration: TextDecoration.underline,
               ),
         ),

@@ -8,9 +8,9 @@ import 'package:whisqr_puncher/widgets/puncher/button/toggleButton.dart';
 
 class PuncherBehaviorButtonWidget extends StatelessWidget {
   PuncherBehaviorButtonWidget({
-    @required this.punchCode,
-    @required this.behaviourPunches,
-    @required this.behaviour,
+    required this.punchCode,
+    required this.behaviourPunches,
+    required this.behaviour,
   });
 
   final String punchCode;

@@ -8,16 +8,16 @@ import 'package:flutter/services.dart';
 import 'package:whisqr_puncher/consts/general.dart';
 
 class L18nUtil {
-  Locale _locale;
-  Map<String, dynamic> _localizedStrings;
-  VoidCallback _onLocaleChangedCallback;
+  Locale? _locale;
+  Map<String, dynamic>? _localizedStrings;
+  VoidCallback? _onLocaleChangedCallback;
 
   Future<void> init() async {
     await setPreferredLanguage();
   }
 
-  dynamic _dotNotationParser(String key) =>
-      (key.split(".")).fold(_localizedStrings, (curr, next) => curr[next]);
+  dynamic _dotNotationParser(String key) => (key.split("."))
+      .fold(_localizedStrings, (dynamic curr, next) => curr[next]);
 
   dynamic _stringInject(dynamic translation, Map<String, dynamic> inject) {
     RegExp injectRegex = RegExp(r"\{{(.+?)\}}");
@@ -25,7 +25,7 @@ class L18nUtil {
         injectRegex.allMatches(translation).toList();
     injectMatches.forEach(
       (RegExpMatch injectMatch) {
-        String regexString = injectMatches.first.group(0);
+        String regexString = injectMatches.first.group(0)!;
         translation = translation.replaceAll(regexString,
             inject[regexString.substring(2, regexString.length - 2)]);
       },
@@ -47,28 +47,27 @@ class L18nUtil {
     }
   }
 
-  Locale _languageToLocale(String language) {
+  Locale _languageToLocale(String? language) {
     if (language == null) return GeneralConsts.DEFAULT_LOCALE;
     Locale locale = GeneralConsts.LOCALES
         .firstWhere((Locale locale) => locale.languageCode == language);
-    if (locale == null) return GeneralConsts.DEFAULT_LOCALE;
     return locale;
   }
 
   Future<void> _loadTranslations() async {
     String jsonString = await rootBundle
-        .loadString('${GeneralConsts.LANG_DIR}${_locale.languageCode}.json');
+        .loadString('${GeneralConsts.LANG_DIR}${_locale!.languageCode}.json');
     Map<String, dynamic> jsonMap = json.decode(jsonString);
     _localizedStrings = jsonMap.map((key, value) {
       return MapEntry(key, value);
     });
   }
 
-  Future<void> setPreferredLanguage([String language]) async {
+  Future<void> setPreferredLanguage([String? language]) async {
     _locale = _languageToLocale(language);
     await _loadTranslations();
     if (_onLocaleChangedCallback != null) {
-      _onLocaleChangedCallback();
+      _onLocaleChangedCallback!();
     }
   }
 
@@ -78,7 +77,7 @@ class L18nUtil {
 
   get locale => _locale;
 
-  get isRtl => _locale.languageCode == "he";
+  get isRtl => _locale!.languageCode == "he";
 
   static final L18nUtil _translations = L18nUtil._internal();
   factory L18nUtil() {

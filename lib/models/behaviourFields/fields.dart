@@ -9,9 +9,9 @@ abstract class BehaviourFields {
   BehaviourFields.clone(BehaviourFields fields);
 
   factory BehaviourFields.fromStringMap(
-      BehaviourType type, Map<String, dynamic> map) {
+      BehaviourType? type, Map<String, dynamic>? map) {
     if (type == BehaviourType.BASICPUNCH)
-      return BasicPunchFields.fromStringMap(map);
-    return null;
+      return BasicPunchFields.fromStringMap(map!);
+    return BasicPunchFields();
   }
 }

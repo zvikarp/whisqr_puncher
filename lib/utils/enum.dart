@@ -1,8 +1,10 @@
-class EnumUtil {
-  String string(Object o) => o.toString().split('.').last;
+import 'package:collection/collection.dart' show IterableExtension;
 
-  T fromString<T>(String key, List<T> values) => values
-      .firstWhere((v) => key.toUpperCase() == string(v), orElse: () => null);
+class EnumUtil {
+  String string(Object? o) => o.toString().split('.').last;
+
+  T? fromString<T>(String? key, List<T> values) => values
+      .firstWhereOrNull((v) => key!.toUpperCase() == string(v));
 }
 
 final EnumUtil enumUtil = EnumUtil();

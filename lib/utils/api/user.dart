@@ -4,8 +4,8 @@ import 'package:whisqr_puncher/consts/api.dart';
 import 'package:whisqr_puncher/utils/api/index.dart';
 
 class UserApi {
-  Future<Response> login(
-      String email, String password, String businessCode) async {
+  Future<Response?> login(
+      String? email, String? password, String? businessCode) async {
     try {
       Response response =
           await apiUtil.dio.post(ApiConsts.USER_LOGIN_PATH, data: {

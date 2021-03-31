@@ -24,18 +24,18 @@ class SigninFormWidget extends StatefulWidget {
 }
 
 class _SigninFormWidgetState extends State<SigninFormWidget> {
-  String _email;
-  String _password;
+  String _email = '';
+  String _password = '';
   bool _loading = false;
-  String _businessCode;
-  String _locationCode;
+  String? _businessCode;
+  String? _locationCode;
 
   Future<void> _onTapForgotPassword() async {
     await launch(GeneralConsts.FORGOT_PASSWORD_LINK);
   }
 
-  Future<Response> _sendSigninRequest() async {
-    Response response =
+  Future<Response?> _sendSigninRequest() async {
+    Response? response =
         await apiUtil.user.login(_email, _password, _businessCode);
     Map<String, dynamic> data = response?.data ?? [];
     if (data['status'] == 'success') {
@@ -52,8 +52,9 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
     return response;
   }
 
-  Future<Map<String, String>> _openBusinessSelector(List businessCodes) async {
-    Map<String, String> businessLocationCodes =
+  Future<Map<String, String>?> _openBusinessSelector(
+      List? businessCodes) async {
+    Map<String, String>? businessLocationCodes =
         await showDialog<Map<String, String>>(
       context: context,
       builder: (BuildContext context) {
@@ -65,11 +66,11 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
 
   Future<void> _onTapSignin() async {
     setState(() => _loading = true);
-    Response response = await _sendSigninRequest();
-    Status status =
+    Response? response = await _sendSigninRequest();
+    Status? status =
         enumUtil.fromString(response?.data['status'], Status.values);
     if (status == Status.PENDING) {
-      Map<String, String> businessLocationCodes =
+      Map<String, String>? businessLocationCodes =
           await _openBusinessSelector(response?.data['businesses']);
       if (businessLocationCodes != null) {
         setState(() {
@@ -82,7 +83,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
     }
     if (status == Status.FAILURE)
       snackbarUtil.show(
-          response.data['message'] ?? l18nUtil.t('msg.unknown-server-error'));
+          response!.data['message'] ?? l18nUtil.t('msg.unknown-server-error'));
     setState(() => _loading = false);
   }
 

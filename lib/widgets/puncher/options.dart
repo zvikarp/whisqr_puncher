@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_text_helpers/flutter_text_helpers.dart';
 
@@ -12,10 +13,12 @@ import 'package:whisqr_puncher/extensions/iterable.dart';
 
 class PuncherOptionsWidget extends StatefulWidget {
   PuncherOptionsWidget({
-    @required this.punchCode,
+    required this.punchCode,
+    this.punchDetails = const {},
   });
 
-  final String punchCode;
+  final String? punchCode;
+  final Map<String, dynamic>? punchDetails;
 
   @override
   _PuncherOptionsWidgetState createState() => _PuncherOptionsWidgetState();
@@ -26,11 +29,12 @@ class _PuncherOptionsWidgetState extends State<PuncherOptionsWidget> {
   List<Reward> _rewards = [];
 
   Future<void> _getBehaviours() async {
-    var res = await apiUtil.business.getBehaviours();
-    Map<String, dynamic> behavioursAsMap = res.data['settings_behaviours'];
+    Response? res = await apiUtil.business.getBehaviours();
+    Map<String, dynamic> behavioursAsMap = res?.data['settings_behaviours'];
     List<Behaviour> behaviours = [];
     behavioursAsMap.forEach((String key, dynamic value) {
-      BehaviourType type = enumUtil.fromString(key, BehaviourType.values);
+      BehaviourType type = enumUtil.fromString(key, BehaviourType.values) ??
+          BehaviourType.UNKNOWN;
       Behaviour behaviour = Behaviour.fromStringMap(type, value);
       behaviours.add(behaviour);
     });
@@ -38,8 +42,8 @@ class _PuncherOptionsWidgetState extends State<PuncherOptionsWidget> {
   }
 
   Future<void> _getRewards() async {
-    var res = await apiUtil.business.getRewards();
-    List<dynamic> rewardsAsList = res.data['settings_rewards'];
+    Response? res = await (apiUtil.business.getRewards());
+    List<dynamic> rewardsAsList = res?.data['settings_rewards'];
     List<Reward> rewards = rewardsAsList
         .mapIndexed<Reward>(
           (dynamic reward, int index) =>
@@ -62,7 +66,7 @@ class _PuncherOptionsWidgetState extends State<PuncherOptionsWidget> {
       ..._behaviours
           .map(
             (Behaviour behaviour) => PuncherBehaviorButtonWidget(
-              punchCode: widget.punchCode,
+              punchCode: widget.punchCode ?? '',
               behaviourPunches: 100,
               behaviour: behaviour,
             ),

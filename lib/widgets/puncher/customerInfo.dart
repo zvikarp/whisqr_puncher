@@ -5,7 +5,7 @@ import 'package:whisqr_puncher/consts/theme.dart';
 
 class PuncherCustomerInfoWidget extends StatelessWidget {
   PuncherCustomerInfoWidget({
-    @required this.punchesCount,
+    required this.punchesCount,
   });
 
   final int punchesCount;

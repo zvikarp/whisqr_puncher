@@ -5,7 +5,7 @@ class BroughtFriendFields extends BehaviourFields {
     this.rewardLevels,
   });
 
-  final Map<int, int> rewardLevels;
+  final Map<int, int>? rewardLevels;
 
   @override
   Map<String, dynamic> toMap() => {

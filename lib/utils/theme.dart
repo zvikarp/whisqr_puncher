@@ -67,7 +67,7 @@ class ThemeUtil {
     ),
   };
 
-  ThemeData getTheme() => themes[GeneralConsts.DEFAULT_THEME];
+  ThemeData? getTheme() => themes[GeneralConsts.DEFAULT_THEME];
 }
 
 ThemeUtil themeUtil = ThemeUtil();
