@@ -55,10 +55,6 @@ class PunchApi {
     User user = await storageUtil.getUser();
     Map<String, dynamic> data = {"details": details};
     String hashedData = cryptoUtil.hash(user.sk!, data);
-    print(hashedData);
-    print(user.pk);
-    print(jsonEncode(data));
-    print(data);
     try {
       Response response = await apiUtil.dio.put(
           '${ApiConsts.PUNCH_PATH}/$punchCode',

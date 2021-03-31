@@ -17,7 +17,6 @@ class PuncherMyTreatWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(myTreat);
     List<dynamic> products = myTreat.fields?['productlist'] ?? [];
     if (!myTreat.active) {
       return Container();

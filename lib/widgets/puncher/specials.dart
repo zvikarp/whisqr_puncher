@@ -17,7 +17,6 @@ class PuncherSpecialsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(opportunist);
     List<dynamic> specials = opportunist.fields?['speciallist'] ?? [];
     if (!opportunist.active) {
       return Container();

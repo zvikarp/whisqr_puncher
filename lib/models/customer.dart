@@ -12,7 +12,7 @@ class Customer {
   });
 
   final String? name;
-  final String? punchCode;
+  final String punchCode;
   final String? cardCode;
   final int? punchCount;
   final int? punchTotal;

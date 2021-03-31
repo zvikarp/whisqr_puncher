@@ -25,7 +25,10 @@
       "specials-tl": "Specials",
       "no-specials": "No specials",
       "mytreat-tl": "My Treat",
-      "no-mytreat": "No 'my treat' products"
+      "no-mytreat": "No 'my treat' products",
+      "is-punched": "Punched!",
+      "rewards-tl": "Rewards",
+      "missing-code": "missing puncher code, please try again"
     }
   },
 
