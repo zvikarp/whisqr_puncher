@@ -13,12 +13,12 @@ class PuncherMyTreatWidget extends StatelessWidget {
   });
 
   final String punchCode;
-  final Behaviour myTreat;
+  final Behaviour? myTreat;
 
   @override
   Widget build(BuildContext context) {
-    List<dynamic> products = myTreat.fields?['productlist'] ?? [];
-    if (!myTreat.active) {
+    List<dynamic> products = myTreat?.fields?['productlist'] ?? [];
+    if (!(myTreat?.active ?? false)) {
       return Container();
     } else if (products.length < 1) {
       return BodyText2(l18nUtil.t('screen.puncher.no-mytreat'));

@@ -9,13 +9,15 @@ part of 'business.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$BusinessStore on _BusinessStore, Store {
-  Computed<List<Behaviour>>? _$behavioursComputed;
+  Computed<ObservableMap<BehaviourType, Behaviour>>? _$behavioursComputed;
 
   @override
-  List<Behaviour> get behaviours => (_$behavioursComputed ??=
-          Computed<List<Behaviour>>(() => super.behaviours,
-              name: '_BusinessStore.behaviours'))
-      .value;
+  ObservableMap<BehaviourType, Behaviour> get behaviours =>
+      (_$behavioursComputed ??=
+              Computed<ObservableMap<BehaviourType, Behaviour>>(
+                  () => super.behaviours,
+                  name: '_BusinessStore.behaviours'))
+          .value;
   Computed<List<Reward>>? _$rewardsComputed;
 
   @override
@@ -27,13 +29,13 @@ mixin _$BusinessStore on _BusinessStore, Store {
   final _$_behavioursAtom = Atom(name: '_BusinessStore._behaviours');
 
   @override
-  ObservableList<Behaviour> get _behaviours {
+  ObservableMap<BehaviourType, Behaviour> get _behaviours {
     _$_behavioursAtom.reportRead();
     return super._behaviours;
   }
 
   @override
-  set _behaviours(ObservableList<Behaviour> value) {
+  set _behaviours(ObservableMap<BehaviourType, Behaviour> value) {
     _$_behavioursAtom.reportWrite(value, super._behaviours, () {
       super._behaviours = value;
     });
@@ -58,7 +60,7 @@ mixin _$BusinessStore on _BusinessStore, Store {
       ActionController(name: '_BusinessStore');
 
   @override
-  void setAllBehaviours(List<Behaviour> behaviours) {
+  void setAllBehaviours(Map<BehaviourType, Behaviour> behaviours) {
     final _$actionInfo = _$_BusinessStoreActionController.startAction(
         name: '_BusinessStore.setAllBehaviours');
     try {

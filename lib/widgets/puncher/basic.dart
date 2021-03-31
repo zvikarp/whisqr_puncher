@@ -11,7 +11,7 @@ class PuncherBasicWidget extends StatelessWidget {
   });
 
   final String punchCode;
-  final Behaviour basic;
+  final Behaviour? basic;
 
   @override
   Widget build(BuildContext context) {

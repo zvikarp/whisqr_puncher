@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
 
+import 'package:whisqr_puncher/enums/behaviourType.dart';
 import 'package:whisqr_puncher/models/behaviour.dart';
 import 'package:whisqr_puncher/models/reward.dart';
 
@@ -11,15 +12,17 @@ abstract class _BusinessStore with Store {
   // behaviour
 
   @observable
-  ObservableList<Behaviour> _behaviours = ObservableList<Behaviour>.of([]);
+  ObservableMap<BehaviourType, Behaviour> _behaviours =
+      ObservableMap<BehaviourType, Behaviour>.of({});
 
   @action
-  void setAllBehaviours(List<Behaviour> behaviours) {
-    _behaviours = ObservableList<Behaviour>.of(behaviours);
+  void setAllBehaviours(Map<BehaviourType, Behaviour> behaviours) {
+    _behaviours =
+        ObservableMap<BehaviourType, Behaviour>.linkedHashMapFrom(behaviours);
   }
 
   @computed
-  List<Behaviour> get behaviours => _behaviours;
+  ObservableMap<BehaviourType, Behaviour> get behaviours => _behaviours;
 
   // reward
 

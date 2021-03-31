@@ -10,7 +10,8 @@ import 'package:whisqr_puncher/models/reward.dart';
 import 'package:whisqr_puncher/stores/index.dart';
 import 'package:whisqr_puncher/utils/l18n.dart';
 import 'package:whisqr_puncher/widgets/puncher/basic.dart';
-import 'package:whisqr_puncher/widgets/puncher/button/reward.dart';
+import 'package:whisqr_puncher/widgets/puncher/friends.dart';
+import 'package:whisqr_puncher/widgets/puncher/reward.dart';
 import 'package:whisqr_puncher/widgets/puncher/myTreat.dart';
 import 'package:whisqr_puncher/widgets/puncher/specials.dart';
 
@@ -18,7 +19,8 @@ class PuncherOptionsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (_) {
-      List<Behaviour> behaviours = stores.business(context).behaviours;
+      Map<BehaviourType, Behaviour> behaviours =
+          stores.business(context).behaviours;
       List<Reward> rewards = stores.business(context).rewards;
       Customer? customer = stores.customer(context, true).customer;
       if (customer == null) return Text('screen.puncher.missing-code'); // TODO
@@ -26,17 +28,21 @@ class PuncherOptionsWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           PuncherBasicWidget(
-              punchCode: customer.punchCode,
-              basic: behaviours.firstWhere((Behaviour behaviour) =>
-                  behaviour.type == BehaviourType.basicpunch)),
+            punchCode: customer.punchCode,
+            basic: behaviours[BehaviourType.basicpunch],
+          ),
+          PuncherFriendsWidget(
+            punchCode: customer.punchCode,
+            friends: behaviours[BehaviourType.broughtfriend],
+          ),
           PuncherSpecialsWidget(
-              punchCode: customer.punchCode,
-              opportunist: behaviours.firstWhere((Behaviour behaviour) =>
-                  behaviour.type == BehaviourType.opportunist)),
+            punchCode: customer.punchCode,
+            opportunist: behaviours[BehaviourType.opportunist],
+          ),
           PuncherMyTreatWidget(
-              punchCode: customer.punchCode,
-              myTreat: behaviours.firstWhere((Behaviour behaviour) =>
-                  behaviour.type == BehaviourType.mytreat)),
+            punchCode: customer.punchCode,
+            myTreat: behaviours[BehaviourType.mytreat],
+          ),
           Padding(
             padding: const EdgeInsets.all(ThemeConsts.L_PAD),
             child: BodyText2(l18nUtil.t('screen.puncher.rewards-tl')),

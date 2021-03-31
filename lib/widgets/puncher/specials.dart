@@ -13,12 +13,12 @@ class PuncherSpecialsWidget extends StatelessWidget {
   });
 
   final String punchCode;
-  final Behaviour opportunist;
+  final Behaviour? opportunist;
 
   @override
   Widget build(BuildContext context) {
-    List<dynamic> specials = opportunist.fields?['speciallist'] ?? [];
-    if (!opportunist.active) {
+    List<dynamic> specials = opportunist?.fields?['speciallist'] ?? [];
+    if (!(opportunist?.active ?? false)) {
       return Container();
     } else if (specials.length < 1) {
       return BodyText2(l18nUtil.t('screen.puncher.no-specials'));

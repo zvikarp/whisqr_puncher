@@ -27,12 +27,12 @@ class _SpalshScreenState extends State<SpalshScreen> {
   Future<void> _getBehaviours() async {
     Response? res = await apiUtil.business.getBehaviours();
     Map<String, dynamic> behavioursAsMap = res?.data['settings_behaviours'];
-    List<Behaviour> behaviours = [];
-    behavioursAsMap.forEach((String key, dynamic value) {
+    Map<BehaviourType, Behaviour> behaviours =
+        behavioursAsMap.map((String key, dynamic value) {
       BehaviourType type = enumUtil.fromString(key, BehaviourType.values) ??
           BehaviourType.unknown;
       Behaviour behaviour = Behaviour.fromStringMap(type, value);
-      behaviours.add(behaviour);
+      return MapEntry(type, behaviour);
     });
     stores.business(context).setAllBehaviours(behaviours);
   }
