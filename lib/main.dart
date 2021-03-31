@@ -18,7 +18,6 @@ void main() async {
       // Provider<CustomerStore>(create: (_) => CustomerStore()),
     ], child: App()),
   );
-  runApp(App());
 }
 
 class App extends StatelessWidget {
