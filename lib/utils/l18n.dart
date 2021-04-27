@@ -25,7 +25,7 @@ class L18nUtil {
         injectRegex.allMatches(translation).toList();
     injectMatches.forEach(
       (RegExpMatch injectMatch) {
-        String regexString = injectMatches.first.group(0)!;
+        String regexString = injectMatch.group(0)!;
         translation = translation.replaceAll(regexString,
             inject[regexString.substring(2, regexString.length - 2)]);
       },
