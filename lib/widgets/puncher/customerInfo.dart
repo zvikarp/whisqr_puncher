@@ -31,7 +31,7 @@ class PuncherCustomerInfoWidget extends StatelessWidget {
           children: [
             _totalPunches(customer?.punchTotal ?? 0),
             CoreSpacer(height: ThemeConsts.L_PAD),
-            BodyText2(l18nUtil.t('screen.puncher.welcome', {
+            HeadlineText5(l18nUtil.t('screen.puncher.welcome', {
               'name': customer?.name ?? l18nUtil.t('screen.puncher.no-name')
             })),
           ],

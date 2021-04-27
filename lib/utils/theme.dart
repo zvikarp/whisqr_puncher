@@ -52,9 +52,9 @@ class ThemeUtil {
           color: ThemeConsts.DARK_TEXT_COLOR,
         ),
         headline4: TextStyle(
-          fontSize: 24,
+          fontSize: 20,
           height: 0.9,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w700,
           color: ThemeConsts.DARK_TEXT_COLOR,
         ),
         headline5: TextStyle(

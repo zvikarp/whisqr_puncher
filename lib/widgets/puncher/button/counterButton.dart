@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_text_helpers/flutter_text_helpers.dart';
 
 import 'package:whisqr_puncher/consts/theme.dart';
 
@@ -7,11 +8,13 @@ class PuncherCounterButtonWidget extends StatelessWidget {
     required this.text,
     this.addDisabled = false,
     this.reduceDisabled = false,
+    this.counter,
     required this.onTapAdd,
     required this.onTapReduce,
   });
 
   final String text;
+  final int? counter;
   final bool addDisabled;
   final bool reduceDisabled;
   final Function onTapAdd;
@@ -55,8 +58,25 @@ class PuncherCounterButtonWidget extends StatelessWidget {
         child: Center(
             child: Padding(
       padding: EdgeInsets.all(ThemeConsts.S_PAD),
-      child: Text(text),
+      child: Text(text, textAlign: TextAlign.center),
     )));
+  }
+
+  Widget _counter() {
+    return Container(
+      margin: EdgeInsets.all(ThemeConsts.S_PAD),
+      width: 38,
+      height: 38,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(150),
+        color: ThemeConsts.PRIMARY_COLOR,
+      ),
+      child: Center(
+          child: HeadlineText4(
+        counter.toString(),
+        color: ThemeConsts.LIGHT_TEXT_COLOR,
+      )),
+    );
   }
 
   @override
@@ -74,6 +94,7 @@ class PuncherCounterButtonWidget extends StatelessWidget {
         children: [
           _reduce(),
           _name(),
+          if (counter != null) _counter(),
           _add(),
         ],
       ),

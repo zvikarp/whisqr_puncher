@@ -6,13 +6,11 @@ import 'package:whisqr_puncher/widgets/puncher/button/counterButton.dart';
 
 class PuncherFriendsWidget extends StatelessWidget {
   PuncherFriendsWidget({
-    required this.punchCode,
     required this.friendsBehavior,
     required this.customerFriends,
     required this.onChangeCustomerFriends,
   });
 
-  final String punchCode;
   final Behaviour? friendsBehavior;
   final Map<String, dynamic> customerFriends;
   final Function(Map<String, dynamic>) onChangeCustomerFriends;

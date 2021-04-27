@@ -24,13 +24,15 @@
       "no-name": "customer",
       "specials-tl": "Specials",
       "no-specials": "No specials",
-      "mytreat-tl": "My Treat",
-      "no-mytreat": "No 'my treat' products",
+      "purchased-treats-tl": "Purchased Treats",
+      "received-treats-tl": "Received Treats",
+      "no-mytreat": "No treats products",
       "is-punched": "Punched!",
       "rewards-tl": "Rewards",
       "no-friends": "Did not bring friends",
       "have-friends": "Brought {{num}} friends",
-      "missing-code": "missing puncher code, please try again"
+      "missing-code": "missing puncher code, please try again",
+      "for-punch-card": "{{name}} for {{punches}} punches"
     }
   },
 
