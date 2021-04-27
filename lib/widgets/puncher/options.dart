@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_text_helpers/flutter_text_helpers.dart';
+import 'package:load/load.dart';
 
 import 'package:whisqr_puncher/consts/theme.dart';
 import 'package:whisqr_puncher/enums/behaviourType.dart';
@@ -24,6 +25,7 @@ class PuncherOptionsWidget extends StatefulWidget {
 
 class _PuncherOptionsWidgetState extends State<PuncherOptionsWidget> {
   Future<void> _onChangeDetails(String key, dynamic value) async {
+    showLoadingDialog();
     Customer? customer = stores.customer(context).customer;
     if (customer != null) {
       customer.details[key] = value;
@@ -37,6 +39,7 @@ class _PuncherOptionsWidgetState extends State<PuncherOptionsWidget> {
     } else {
       print('no customer');
     }
+    hideLoadingDialog();
   }
 
   @override
