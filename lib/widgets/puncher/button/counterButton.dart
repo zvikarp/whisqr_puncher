@@ -40,7 +40,7 @@ class PuncherCounterButtonWidget extends StatelessWidget {
       padding: EdgeInsets.all(ThemeConsts.S_PAD),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(ThemeConsts.S_RADIUS),
-        color: color,
+        color: color.withOpacity(disabled ? 0.4 : 1),
       ),
       child: IconButton(
         icon: Icon(icon),

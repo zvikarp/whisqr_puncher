@@ -38,6 +38,7 @@ class PuncherFriendsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return PuncherCounterButtonWidget(
         text: _friendsText(customerFriends['friendcount'] ?? 0),
+        reduceDisabled: (customerFriends['friendcount'] ?? 0) < 1,
         onTapAdd: () => _onChangeCustomerFriends(1),
         onTapReduce: () => _onChangeCustomerFriends(-1));
   }
