@@ -28,7 +28,8 @@
       "no-mytreat": "No 'my treat' products",
       "is-punched": "Punched!",
       "rewards-tl": "Rewards",
-      "no-friends": "No friends",
+      "no-friends": "Did not bring friends",
+      "have-friends": "Brought {{num}} friends",
       "missing-code": "missing puncher code, please try again"
     }
   },

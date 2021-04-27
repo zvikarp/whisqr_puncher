@@ -12,7 +12,7 @@ abstract class _CustomerStore with Store {
 
   @action
   void setCustomer(Customer customer) {
-    _customer = Observable(customer);
+    _customer = Observable(Customer.clone(customer));
   }
 
   @computed

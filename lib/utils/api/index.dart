@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:whisqr_puncher/models/user.dart';
 import 'package:whisqr_puncher/utils/api/business.dart';
 import 'package:whisqr_puncher/utils/api/punch.dart';
+import 'package:whisqr_puncher/utils/api/redeem.dart';
 import 'package:whisqr_puncher/utils/api/user.dart';
 import 'package:whisqr_puncher/utils/storage.dart';
 
@@ -11,6 +12,7 @@ class ApiUtil {
   UserApi user = userApi;
   BusinessApi business = businessApi;
   PunchApi punch = punchApi;
+  RedeemApi redeem = redeemApi;
 
   Future<void> setHeaders() async {
     User user = await storageUtil.getUser();
