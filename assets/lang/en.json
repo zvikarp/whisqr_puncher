@@ -32,7 +32,8 @@
       "no-friends": "Did not bring friends",
       "have-friends": "Brought {{num}} friends",
       "missing-code": "missing puncher code, please try again",
-      "for-punch-card": "{{name}} for {{punches}} punches"
+      "receive-punch-card": "{{name}} for {{punches}} punches",
+      "redeem-punch-card": "Get {{name}} for {{punches}} punches"
     }
   },
 

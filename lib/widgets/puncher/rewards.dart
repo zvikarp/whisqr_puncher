@@ -27,7 +27,7 @@ class PuncherRewardWidget extends StatelessWidget {
                 reward.name ?? l18nUtil.t('model.reward.missing-name');
             String punches = reward.punchCost.toString();
             return PuncherCounterButtonWidget(
-              text: l18nUtil.t('screen.puncher.for-punch-card',
+              text: l18nUtil.t('screen.puncher.redeem-punch-card',
                   {'name': name, 'punches': punches}),
               onTapAdd: () {},
               onTapReduce: () {},
