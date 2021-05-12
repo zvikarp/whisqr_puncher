@@ -19,7 +19,7 @@ class PuncherToggleButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: disabled ? () {} : onToggle(!value),
+      onTap: disabled ? () {} : () => onToggle(!value),
       child: AnimatedContainer(
         duration: Duration(milliseconds: 100),
         margin: EdgeInsets.symmetric(

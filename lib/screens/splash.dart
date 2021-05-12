@@ -56,9 +56,9 @@ class _SpalshScreenState extends State<SpalshScreen> {
       await apiUtil.setHeaders();
       await _loadBusinessSettings();
       // WIP
-      // AutoRouter.of(context).replace(ScannerScreenRoute());
-      AutoRouter.of(context).replace(
-          PuncherScreenRoute(link: 'https://loyalty.whisqr.com/card/4PKuZ9C'));
+      AutoRouter.of(context).replace(ScannerScreenRoute());
+      // AutoRouter.of(context).replace(
+      //     PuncherScreenRoute(link: 'https://loyalty.whisqr.com/card/4PKuZ9C'));
     } else {
       AutoRouter.of(context).replace(SigninScreenRoute());
     }

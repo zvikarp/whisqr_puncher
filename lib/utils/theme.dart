@@ -30,12 +30,12 @@ class ThemeUtil {
       textTheme: TextTheme(
         bodyText2: TextStyle(
           height: 1.2,
-          fontSize: 16,
+          fontSize: 18,
           fontWeight: FontWeight.w400,
           color: ThemeConsts.DARK_TEXT_COLOR,
         ),
         headline1: TextStyle(
-          fontSize: 32,
+          fontSize: 36,
           fontWeight: FontWeight.w600,
           color: ThemeConsts.DARK_TEXT_COLOR,
         ),
@@ -47,18 +47,18 @@ class ThemeUtil {
         ),
         headline3: TextStyle(
           height: 0.9,
-          fontSize: 24,
+          fontSize: 28,
           fontWeight: FontWeight.w400,
           color: ThemeConsts.DARK_TEXT_COLOR,
         ),
         headline4: TextStyle(
-          fontSize: 20,
+          fontSize: 22,
           height: 0.9,
           fontWeight: FontWeight.w700,
           color: ThemeConsts.DARK_TEXT_COLOR,
         ),
         headline5: TextStyle(
-          fontSize: 24,
+          fontSize: 28,
           height: 0.9,
           fontWeight: FontWeight.w400,
           color: ThemeConsts.DARK_TEXT_COLOR,

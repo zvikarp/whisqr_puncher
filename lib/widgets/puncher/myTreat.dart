@@ -35,7 +35,7 @@ class PuncherMyTreatWidget extends StatelessWidget {
             String name = special?['productname'] ?? '?';
             String punches = special?['productpunches'].toString() ?? '?';
             return PuncherCounterButtonWidget(
-              text: l18nUtil.t('screen.puncher.for-punch-card',
+              text: l18nUtil.t('screen.puncher.redeem-punch-card',
                   {'name': name, 'punches': punches}),
               onTapAdd: () {},
               onTapReduce: () {},
@@ -51,7 +51,7 @@ class PuncherMyTreatWidget extends StatelessWidget {
             String name = special?['productname'] ?? '?';
             String punches = special?['productpunches'].toString() ?? '?';
             return PuncherCounterButtonWidget(
-              text: l18nUtil.t('screen.puncher.for-punch-card',
+              text: l18nUtil.t('screen.puncher.receive-punch-card',
                   {'name': name, 'punches': punches}),
               onTapAdd: () {},
               onTapReduce: () {},
