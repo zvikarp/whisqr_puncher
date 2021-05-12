@@ -66,7 +66,7 @@ class _PuncherOptionsWidgetState extends State<PuncherOptionsWidget> {
           PuncherSpecialsWidget(
             punchCode: customer.punchCode,
             opportunist: behaviours[BehaviourType.opportunist],
-            customerSpecials: customer.details['opportunist'] ?? [],
+            customerOpportunist: customer.details['opportunist'] ?? {},
             onChangeCustomerSpecials: (specials) =>
                 _onChangeDetails('opportunist', specials),
           ),

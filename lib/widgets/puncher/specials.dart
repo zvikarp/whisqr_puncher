@@ -12,29 +12,35 @@ class PuncherSpecialsWidget extends StatelessWidget {
   PuncherSpecialsWidget({
     required this.punchCode,
     required this.opportunist,
-    required this.customerSpecials,
+    required this.customerOpportunist,
     required this.onChangeCustomerSpecials,
   });
 
   final String punchCode;
   final Behaviour? opportunist;
-  final List<Map<String, dynamic>> customerSpecials;
-  final Function(List<Map<String, dynamic>>) onChangeCustomerSpecials;
+  final Map customerOpportunist;
+  final Function(Map) onChangeCustomerSpecials;
 
   _onChangeCustomerSpecials(int index, int multiplyer) {
+    final List customerSpecials =
+        List.from(customerOpportunist['specialslist'] ?? []);
     List<Map<String, dynamic>> _customerSpecials = List.from(customerSpecials);
     if (_customerSpecials.length != specials().length) {
       _customerSpecials = List.generate(specials().length, (_) => {});
     }
     _customerSpecials[index]['count'] =
         (_customerSpecials[index]['count'] ?? 0) + multiplyer;
-    onChangeCustomerSpecials(_customerSpecials);
+    customerOpportunist['specialslist'] = _customerSpecials;
+    onChangeCustomerSpecials(customerOpportunist);
   }
 
   List<dynamic> specials() => opportunist?.fields?['speciallist'] ?? [];
 
   @override
   Widget build(BuildContext context) {
+    final List customerSpecials =
+        List.from(customerOpportunist['specialslist'] ?? []);
+
     if (!(opportunist?.active ?? false)) {
       return Container();
     } else if (specials().length < 1) {
