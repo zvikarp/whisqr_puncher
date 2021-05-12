@@ -9,11 +9,13 @@ class PuncherFriendsWidget extends StatelessWidget {
     required this.friendsBehavior,
     required this.customerFriends,
     required this.onChangeCustomerFriends,
+    required this.isPunched,
   });
 
   final Behaviour? friendsBehavior;
   final Map<String, dynamic> customerFriends;
   final Function(Map<String, dynamic>) onChangeCustomerFriends;
+  final bool isPunched;
 
   _onChangeCustomerFriends(int multiplyer) {
     customerFriends['punchcount'] =
@@ -36,7 +38,9 @@ class PuncherFriendsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return PuncherCounterButtonWidget(
         text: _friendsText(customerFriends['friendcount'] ?? 0),
-        reduceDisabled: (customerFriends['friendcount'] ?? 0) < 1,
+        reduceDisabled:
+            (!isPunched) || (customerFriends['friendcount'] ?? 0) < 1,
+        addDisabled: !isPunched,
         onTapAdd: () => _onChangeCustomerFriends(1),
         onTapReduce: () => _onChangeCustomerFriends(-1));
   }

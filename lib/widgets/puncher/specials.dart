@@ -14,12 +14,14 @@ class PuncherSpecialsWidget extends StatelessWidget {
     required this.opportunist,
     required this.customerOpportunist,
     required this.onChangeCustomerSpecials,
+    required this.isPunched,
   });
 
   final String punchCode;
   final Behaviour? opportunist;
   final Map customerOpportunist;
   final Function(Map) onChangeCustomerSpecials;
+  final bool isPunched;
 
   _onChangeCustomerSpecials(int index, int multiplyer) {
     final List customerSpecials =
@@ -60,10 +62,12 @@ class PuncherSpecialsWidget extends StatelessWidget {
               return PuncherCounterButtonWidget(
                 text: l18nUtil.t('screen.puncher.receive-punch-card',
                     {'name': name, 'punches': punches}),
-                reduceDisabled: (customerSpecials.length > index
-                        ? customerSpecials[index]['count'] ?? 0
-                        : 0) <
-                    1,
+                reduceDisabled: (!isPunched) ||
+                    (customerSpecials.length > index
+                            ? customerSpecials[index]['count'] ?? 0
+                            : 0) <
+                        1,
+                addDisabled: !isPunched,
                 onTapAdd: () => _onChangeCustomerSpecials(index, 1),
                 onTapReduce: () => _onChangeCustomerSpecials(index, -1),
               );

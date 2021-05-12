@@ -11,7 +11,7 @@ class Customer {
   final String? name;
   final String punchCode;
   final String? cardCode;
-  final int? punchCount;
+  final int punchCount;
   final int? punchTotal;
   final Map<String, dynamic> details;
 
@@ -19,7 +19,7 @@ class Customer {
         name: map['fullname'],
         punchCode: map['punchcode'],
         cardCode: map['cardcode'],
-        punchCount: int.parse((map['punchcount'] ?? 0).toString()),
+        punchCount: int.parse((map['punches'] ?? 0).toString()),
         punchTotal: int.parse((map['punchtotal'] ?? 0).toString()),
         details: Map.from(map['details'] ?? {}),
       );

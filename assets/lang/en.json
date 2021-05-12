@@ -28,6 +28,8 @@
       "received-treats-tl": "Received Treats",
       "no-mytreat": "No treats products",
       "is-punched": "Punched!",
+      "not-punched": "Click to Punch",
+      "punch-counter": "{{num}} Basic Punch",
       "rewards-tl": "Rewards",
       "no-friends": "Did not bring friends",
       "have-friends": "Brought {{num}} friends",
