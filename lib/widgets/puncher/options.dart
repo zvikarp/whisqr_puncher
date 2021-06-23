@@ -6,6 +6,7 @@ import 'package:load/load.dart';
 import 'package:whisqr_puncher/enums/behaviourType.dart';
 import 'package:whisqr_puncher/models/behaviour.dart';
 import 'package:whisqr_puncher/models/customer.dart';
+import 'package:whisqr_puncher/models/redeemable.dart';
 import 'package:whisqr_puncher/models/reward.dart';
 import 'package:whisqr_puncher/stores/index.dart';
 import 'package:whisqr_puncher/utils/api/index.dart';
@@ -29,7 +30,27 @@ class _PuncherOptionsWidgetState extends State<PuncherOptionsWidget> {
       Response? customerRes =
           await apiUtil.punch.update(customer.punchCode, customer.details);
       if (customerRes?.statusCode == 200) {
-        Customer updatedCustomer = Customer.fromStringMap(customerRes?.data);
+        Customer updatedCustomer = Customer.fromStringMap(customerRes?.data)
+            .copyWith(redemptionDetails: customer.redemptionDetails);
+        stores.customer(context).setCustomer(updatedCustomer);
+      }
+    } else {
+      print('no customer');
+    }
+    hideLoadingDialog();
+  }
+
+  Future<void> _onChangeRedemptionDetails(
+      List<Redeemable> updatedRedemptionDetails) async {
+    showLoadingDialog();
+    Customer? customer = stores.customer(context).customer;
+    if (customer != null) {
+      customer = customer.copyWith(redemptionDetails: updatedRedemptionDetails);
+      Response? customerRes = await apiUtil.redeem
+          .update(customer.punchCode, customer.redemptionDetails);
+      if (customerRes?.statusCode == 200) {
+        Customer updatedCustomer = Customer.fromStringMap(customerRes?.data)
+            .copyWith(details: customer.details);
         stores.customer(context).setCustomer(updatedCustomer);
       }
     } else {
@@ -65,6 +86,9 @@ class _PuncherOptionsWidgetState extends State<PuncherOptionsWidget> {
           ),
           PuncherRewardWidget(
             rewards: rewards,
+            customerRewards: customer.redemptionDetails,
+            onChangeCustomerRewards: (updatedRedemptionDetails) =>
+                _onChangeRedemptionDetails(updatedRedemptionDetails),
           ),
           PuncherSpecialsWidget(
             punchCode: customer.punchCode,
